@@ -3,7 +3,7 @@
 @layer utilities {
   .animate-dash {
     stroke-dasharray: 4500;
-    animation: dash 8s ease;
+    animation: dash 8s ease forwards ;
   }
 
   @keyframes dash {
@@ -28,4 +28,5 @@ body,
 .app {
   height: 100%;
   width: 100%;
+  background: linear-gradient(to right, #2c5364, #0f2027);
 }

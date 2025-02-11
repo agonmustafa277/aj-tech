@@ -1,21 +1,95 @@
 import Navbar from "@/scenes/navbar";
-import  Logo from "@/assets/Logo_BG_Schraeg.svg"
-import { div } from "framer-motion/client";
-import React from "react";
+import  { useEffect } from "react";
+import {gsap} from "gsap";
 
+
+  
 
 
 function App() {
+ {/** const bg1 = useRef(null)
+  useLayoutEffect(()=> {
+    let ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: bg1.current,
+        pin: bg1.current,
+        pinSpacing: false,
+        start: "top top",
+        endTrigger: ".last",
+        end: "bottom bottom"
+      });
 
+      gsap.timeline({
+        scrollTrigger: {
+          trigger:
+          pin:
+          scrub: 1,
+          start:"0% 0%"
+        }
+      }).to(img.current, { transform: "translateZ(2200px)"})
+    });
+    return () => ctx.revert();
+  },[])
+
+  gsap.fromTo(
+    ".loading-page",
+    {
+     opacity: 1 
+    },
+    {
+      opacity: 0,
+      duration: 1.5,
+      delay: 8,
+    }
+    
+  );
+  
+  gsap.fromTo(
+    ".logo-name",
+    {
+      y: 50,
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 2,
+      delay: 0.5,
+    }
+  )*/}
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    // SVG-Loading-Animation bleibt sichtbar für 3 Sekunden und blendet dann aus
+    tl.to(".loading-page", {
+      opacity: 0,
+      duration: 1.5,
+      delay: 3, // Länger sichtbar lassen
+    });
+
+   tl.set(".loading-page", {display: "none"});
+    // Hauptseite erscheint nach dem Laden
+    tl.fromTo(
+      ".logo-name",
+      { opacity: 0, y: 0 },
+      { opacity: 1, y: 0, duration: 2, delay: -1 } // Verzögert den Start leicht für einen besseren Übergang
+    );
+  }, []);
 
   return (
     <div>
- {/** <div className="max-w-[1980px] app bg-gradient-to-r  from-gray-200 to-black">
-      <Navbar />
-    </div >*/}
-
-
-<div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#2c5364] to-[#0f2027] flex flex-col gap-1 items-center justify-center">
+      
+  <div className="logo-name absolute  gap-6 top-0 left-0 bg-gradient-to-r from-[#2c5364] to-[#0f2027]  h-full w-full flex flex-col items-center justify-center">
+    <div>
+   
+    </div>
+    <div className="h-[540px] w-[1040px] bg-white rounded-4xl absolute align-middle justify-center flex items-center">
+      <p className="text-black">Willkommen bei <b>A.J.</b> Tech</p>
+    </div>
+</div>
+<Navbar />
+<div className="loading-page absolute top-0 left-0 w-full h-full  bg-gradient-to-r from-[#2c5364] to-[#0f2027] flex flex-col gap-1 items-center justify-center">
   {/*<img src={Logo} className="h-[500px] w-[500px] stroke-white stroke-1  fill-opacity-0 hover:stroke-3 drop-shadow-3xl hover:animate-draw" alt="Logo" />
   **/}
   <svg xmlns="http://www.w3.org/2000/svg"
@@ -131,8 +205,8 @@ function App() {
              325.00,240.00 342.71,239.41 342.71,239.41
              342.71,239.41 345.00,237.00 345.00,237.00 Z" />
 </svg>
-
 </div>
+
 
 </div>
 
