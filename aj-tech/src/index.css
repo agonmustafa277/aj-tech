@@ -3,7 +3,7 @@
 @layer utilities {
   .animate-dash {
     stroke-dasharray: 4500;
-    animation: dash 8s ease forwards ;
+    animation: dash 8s ease forwards;
   }
 
   @keyframes dash {
@@ -13,14 +13,12 @@
     100% {
       stroke-dashoffset: 0;
     }
-
-
   }
 }
 
-  @theme{
-    --drop-shadow-3xl: 0 15px 15px rgba(0, 0, 0, 0.55);
-  }
+@theme {
+  --drop-shadow-3xl: 0 15px 15px rgba(0, 0, 0, 0.55);
+}
 
 html,
 body,
