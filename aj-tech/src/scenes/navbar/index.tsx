@@ -4,9 +4,10 @@ const Navbar = () => {
       <div className=" absolute inline-block size-40">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="141.123mm"
-          height="141.123mm"
-          viewBox="0 0 1250 2000">
+          /*width="141.123mm"
+          height="141.123mm"*/
+          viewBox="0 0 1250 2000"
+          className="w-90 h-100">
           <path
             id="Auswahl"
             fill="none"

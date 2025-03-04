@@ -1,6 +1,7 @@
 import Navbar from "@/scenes/navbar";
 import { useEffect } from "react";
 import { gsap } from "gsap";
+import Cards from "@/scenes/cards";
 
 function App() {
   useEffect(() => {
@@ -23,24 +24,30 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <div className="logo-name absolute  gap-6 top-0 left-0 bg-gradient-to-r from-[#2c5364] to-[#0f2027]  h-full w-full flex flex-col items-center justify-center">
-        <div></div>
-        <div className="h-[540px] w-[1040px] bg-white rounded-4xl absolute align-middle justify-center flex items-center">
-          <p className="text-black">
-            Willkommen bei <b>A.J.</b> Tech
-          </p>
-        </div>
-      </div>
+    <div className="">
+      <div className="absolute max-w-full w-full h-screen gap-6 top-0 left-0 bg-gradient-to-r from-[#2c5364] to-[#0f2027] flex flex-row items-center justify-center p-9 md:pr-15 md:pt-30">
+    {/* Text Container */}
+    <div className="text-white max-w-md mr-10 flex flex-col items-center text-center">
+        <h1 className="text-4xl font-bold">Willkommen bei <b>A.J.</b> Tech</h1>
+        <h2 className="mt-4 text-2xl">Innovative Lösungen für die digitale Zukunft.</h2>
+    </div>
+
+    {/* Card Container */}
+    <div className="h-[540px] w-[320px] md:h-[610px] md:w-[906px] bg-[#f5f2fe] rounded-4xl flex items-center justify-center">
+        <p className="text-black text-xl">Hier könnte dein Inhalt stehen.</p>
+    </div>
+</div>
+
       <Navbar />
-      <div className="loading-page absolute top-0 left-0 w-full h-full  bg-gradient-to-r from-[#2c5364] to-[#0f2027] flex flex-col gap-1 items-center justify-center">
+      <div className="loading-page max-w-full absolute top-0 left-0  lg:w-full h-screen md:w-full bg-gradient-to-r from-[#2c5364] to-[#0f2027] flex flex-col gap-1 items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="141.123mm"
-          height="141.123mm"
-          viewBox="0 0 500 500">
+          /*width="141.123mm"
+          height="141.123mm"*/
+          viewBox="0 0 500 500"
+          className="w-95 h-100">
           <path
-            className="animate-dash"
+            className="animate-dash w-80 h-100"
             fill="none"
             stroke="white"
             stroke-width="1.5"
@@ -152,7 +159,9 @@ function App() {
              342.71,239.41 345.00,237.00 345.00,237.00 Z"
           />
         </svg>
+        
       </div>
+      <Cards />
     </div>
   );
 }
