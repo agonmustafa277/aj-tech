@@ -1,13 +1,10 @@
-import Navbar from "@/scenes/navbar";
+import Navbar from "./scenes/navbar";
 import { useEffect } from "react";
 import { gsap } from "gsap";
-import Cards from "@/scenes/cards";
+import Cards from "./scenes/cards";
 import UeberUns from "./scenes/ueber_uns";
 import Kontakt from "./scenes/Kontakt";
-//import Hintergrund_hero from "./assets/hero.jpg";
 import Footer from "./scenes/Footer";
-
-
 
 function App() {
   useEffect(() => {
@@ -16,67 +13,73 @@ function App() {
     tl.to(".loading-page", {
       opacity: 0,
       duration: 1.5,
-      delay: 3,
+      delay: 2.5,
     });
 
     tl.set(".loading-page", { display: "none" });
 
     tl.fromTo(
       ".logo-name",
-      { opacity: 0, y: 0 },
-      { opacity: 1, y: 0, duration: 2, delay: -1 }
+      { opacity: 0, y: 5 },
+      { opacity: 1, y: 0, duration: 1.5, delay: -1 }
     );
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+    <div className="relative w-full min-h-screen overflow-x-hidden 
+                    bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
 
+      {/* Hintergrund-Effekte */}
       <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div className="w-[600px] h-[600px] bg-indigo-500 blur-[180px] rounded-full absolute -top-40 left-10"></div>
-        <div className="w-[500px] h-[500px] bg-cyan-400 blur-[180px] rounded-full absolute bottom-0 right-10"></div>
+        <div className="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-indigo-500 blur-[160px] rounded-full absolute -top-20 left-10"></div>
+        <div className="w-[250px] h-[250px] sm:w-[450px] sm:h-[450px] bg-cyan-400 blur-[160px] rounded-full absolute bottom-0 right-10"></div>
       </div>
+
       {/* NAVBAR */}
       <Navbar />
 
-      <div id="home" className="pt-32">
+      {/* HERO SECTION */}
+      <section id="home" className="pt-28 sm:pt-36 lg:pt-40">
         <div
-        className="w-full max-w-[1980px] mx-auto px-5 py-16 
-                   flex flex-col md:flex-row items-center md:items-center 
-                   justify-between mt-10"
-      >
-        {/* TEXT LINKS */}
-        <div className="text-white max-w-md text-center ml-10">
-          <h1 className="text-5xl font-bold">
-            Willkommen bei <b>A.J.</b> Tech
-          </h1>
+          className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10
+                     flex flex-col md:flex-row items-center justify-between"
+        >
+          {/* TEXT */}
+          <div className="text-white max-w-lg text-center md:text-left md:max-w-xl px-2">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              Willkommen bei <span className="font-extrabold">A.J. Tech</span>
+            </h1>
 
-          <h2 className="mt-4 text-2xl leading-snug">
-            Innovative Lösungen für die digitale Zukunft.
-          </h2>
+            <h2 className="mt-4 text-xl sm:text-2xl lg:text-3xl leading-snug">
+              Innovative Lösungen für die digitale Zukunft.
+            </h2>
+          </div>
+
+          {/* BILD */}
+          <img
+            src="/hero.jpg"
+            alt="Hero"
+            className="
+              w-[360px] h-[360px] 
+              sm:w-[480px] sm:h-[480px] 
+              md:w-[520px] md:h-[520px]
+              lg:w-[650px] lg:h-[450px]
+              xl:w-[780px] xl:h-[500px]
+              object-cover rounded-3xl shadow-xl mt-10 md:mt-0"
+          />
         </div>
-
-        {/* BILD RECHTS */}
-        <img
-          src="/hero.jpg"
-          alt="Hero"
-          className="w-[320px] h-[320px] md:w-[820px] md:h-[500px] 
-                     object-cover rounded-3xl shadow-xl"
-        />
-      </div>
-      </div>
-     
-
-      {/* HERO-BEREICH – Text links, Bild rechts */}
-      
+      </section>
 
       {/* LOADING SCREEN */}
-      <div className="loading-page absolute inset-0 w-full h-screen 
-                      bg-gradient-to-r from-[#2c5364] to-[#0f2027] 
-                      flex flex-col items-center justify-center gap-1 z-[60]">
+      <div
+        className="loading-page absolute inset-0 w-full h-screen 
+                   bg-gradient-to-r from-[#2c5364] to-[#0f2027] 
+                   flex flex-col items-center justify-center gap-3 z-[60]"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 500 500"
-          className="w-40 h-40"
+          className="w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40"
         >
           <path
             className="animate-dash"
@@ -193,26 +196,20 @@ function App() {
         </svg>
       </div>
 
-      {/* RESTLICHER SEITENINHALT */}
+      {/* CONTENT SECTIONS */}
       <section id="service" className="pt-20">
         <Cards />
       </section>
-      
+
       <section id="ueber-uns" className="pt-20">
         <UeberUns />
       </section>
-      
-      <section id="kontakt" className="pt-32">
-         <Kontakt />
-      </section>
-     
-      {/*<Routes>
-        <Route path="/impressum" element={<Impressum />} />
-        <Route path="/datenschutz" element={<Datenschutz />} />
-  </Routes>*/}
-      
 
-      
+      <section id="kontakt" className="pt-28">
+        <Kontakt />
+      </section>
+
+      {/* FOOTER */}
       <Footer />
     </div>
   );

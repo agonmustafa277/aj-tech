@@ -2,58 +2,152 @@ import { Users, Rocket, Lightbulb } from "lucide-react";
 
 const UeberUns = () => {
   return (
-    <div className="relative w-full bg-gradient-to-r from-[#2c5364] to-[#0f2027] py-24 px-6 overflow-hidden">
-
-      {/* Glow background */}
+    <section
+      className="
+        relative w-full 
+        bg-gradient-to-r from-[#2c5364] to-[#0f2027]
+        py-28 px-6
+        overflow-hidden
+      "
+      id="ueber-uns"
+    >
+      {/* Glow Background */}
       <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div className="w-[600px] h-[600px] bg-indigo-500 blur-[180px] rounded-full absolute -top-40 left-10"></div>
-        <div className="w-[500px] h-[500px] bg-cyan-400 blur-[180px] rounded-full absolute bottom-0 right-10"></div>
+        <div className="w-[650px] h-[650px] bg-indigo-500 blur-[200px] rounded-full absolute -top-40 left-10"></div>
+        <div className="w-[550px] h-[550px] bg-cyan-400 blur-[200px] rounded-full absolute bottom-0 right-10"></div>
       </div>
 
-      <div className="relative max-w-[1980px] mx-auto text-center text-white">
+      {/* CONTENT */}
+      <div className="relative max-w-[1500px] mx-auto text-center text-white">
+        {/* Heading */}
+        <h2
+          className="
+            text-4xl md:text-5xl font-bold 
+            mb-8 drop-shadow-xl
+          "
+        >
+          Über uns
+        </h2>
 
-        <h2 className="text-4xl font-bold mb-6">Über uns</h2>
-
-        <p className="max-w-3xl mx-auto text-lg text-gray-200 leading-relaxed mb-16">
-          Wir sind ein junges, dynamisches Team, das digitale Lösungen mit Leidenschaft und Präzision entwickelt.
-          Mit einem frischen Blick, moderner Technologie und echter Begeisterung für Innovation begleiten wir unsere
-          Kunden von der Idee bis zur Umsetzung – zuverlässig, transparent und auf Augenhöhe.
+        {/* Intro Text */}
+        <p
+          className="
+            max-w-3xl mx-auto 
+            text-lg md:text-xl 
+            text-gray-200 
+            leading-relaxed 
+            mb-20
+          "
+        >
+          Wir sind ein junges, dynamisches Team, das digitale Lösungen mit
+          Leidenschaft und Präzision entwickelt. Dabei begleiten wir unsere
+          Kunden von der Idee bis zur Umsetzung – innovativ, zuverlässig
+          und immer auf Augenhöhe.
         </p>
 
-        {/* Icon Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-4xl mx-auto">
-
-          {/* Teamorientiert */}
-          <div className="flex flex-col items-center">
-            <Users className="w-14 h-14 text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Teamorientiert</h3>
-            <p className="text-gray-300 text-sm">
-              Wir arbeiten eng zusammen und kombinieren individuelle Stärken.
+        {/* ICON ROW */}
+        <div
+          className="
+            grid 
+            grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+            gap-12
+            max-w-5xl mx-auto
+          "
+        >
+          {/* BLOCK 1 */}
+          <div
+            className="
+              group
+              flex flex-col items-center text-center
+              p-8 rounded-3xl
+              backdrop-blur-xl bg-white/10
+              border border-white/10
+              shadow-xl
+              transition-all 
+              duration-500
+              hover:bg-white/20
+              hover:shadow-2xl
+              hover:-translate-y-2
+            "
+          >
+            <Users
+              className="
+                w-16 h-16 mb-4 
+                text-white drop-shadow-lg 
+                transition-transform duration-500 
+                group-hover:scale-110
+              "
+            />
+            <h3 className="text-2xl font-semibold mb-3">Teamorientiert</h3>
+            <p className="text-gray-200">
+              Wir kombinieren individuelle Stärken und arbeiten eng zusammen,
+              um bestmögliche Ergebnisse zu erzielen.
             </p>
           </div>
 
-          {/* Innovativ */}
-          <div className="flex flex-col items-center">
-            <Rocket className="w-14 h-14 text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Innovativ</h3>
-            <p className="text-gray-300 text-sm">
-              Wir nutzen moderne Technologien für zukunftssichere Lösungen.
+          {/* BLOCK 2 */}
+          <div
+            className="
+              group
+              flex flex-col items-center text-center
+              p-8 rounded-3xl
+              backdrop-blur-xl bg-white/10
+              border border-white/10
+              shadow-xl
+              transition-all 
+              duration-500
+              hover:bg-white/20
+              hover:shadow-2xl
+              hover:-translate-y-2
+            "
+          >
+            <Rocket
+              className="
+                w-16 h-16 mb-4 
+                text-white drop-shadow-lg 
+                transition-transform duration-500 
+                group-hover:scale-110
+              "
+            />
+            <h3 className="text-2xl font-semibold mb-3">Innovativ</h3>
+            <p className="text-gray-200">
+              Wir nutzen moderne Technologien und entwickeln zukunftsfähige,
+              skalierbare Lösungen.
             </p>
           </div>
 
-          {/* Kreativ */}
-          <div className="flex flex-col items-center">
-            <Lightbulb className="w-14 h-14 text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Kreativ</h3>
-            <p className="text-gray-300 text-sm">
-              Neue Ideen und smarte Konzepte treiben uns täglich an.
+          {/* BLOCK 3 */}
+          <div
+            className="
+              group
+              flex flex-col items-center text-center
+              p-8 rounded-3xl
+              backdrop-blur-xl bg-white/10
+              border border-white/10
+              shadow-xl
+              transition-all 
+              duration-500
+              hover:bg-white/20
+              hover:shadow-2xl
+              hover:-translate-y-2
+            "
+          >
+            <Lightbulb
+              className="
+                w-16 h-16 mb-4 
+                text-white drop-shadow-lg 
+                transition-transform duration-500 
+                group-hover:scale-110
+              "
+            />
+            <h3 className="text-2xl font-semibold mb-3">Kreativ</h3>
+            <p className="text-gray-200">
+              Neue Ideen und clevere Konzepte sind unser täglicher Antrieb.
             </p>
           </div>
-
         </div>
-
       </div>
-    </div>
+    </section>
   );
 };
 
