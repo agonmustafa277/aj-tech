@@ -1,119 +1,112 @@
 import { useState } from "react";
 
-const Kontakt = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    nachricht: "",
-  });
+function Kontakt() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle"
-  );
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setLoading(true);
+    setSuccessMsg("");
+    setErrorMsg("");
 
     try {
-      const res = await fetch("https://deine-domain.de/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        "https://aj-tech-backend.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message }),
+        }
+      );
 
-      if (!res.ok) throw new Error("Fehler beim Senden");
+      const data = await res.json();
 
-      setStatus("success");
-      setForm({ name: "", email: "", nachricht: "" });
+      if (res.ok && data.success) {
+        setSuccessMsg("Nachricht erfolgreich gesendet!");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setErrorMsg(data.error || "Fehler beim Senden.");
+      }
     } catch (err) {
-      setStatus("error");
+      setErrorMsg("Server nicht erreichbar.");
     }
+
+    setLoading(false);
   };
 
   return (
-    <div className="w-full bg-gradient-to-r from-[#2c5364] to-[#0f2027] py-20 px-6 flex justify-center">
-      
-      <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div className="w-[600px] h-[600px] bg-indigo-500 blur-[180px] rounded-full absolute -top-40 left-10"></div>
-        <div className="w-[500px] h-[500px] bg-cyan-400 blur-[180px] rounded-full absolute bottom-0 right-10"></div>
-      </div>
-      
-      <div className="w-full max-w-xl bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl border border-white/20">
+    <div className="w-full max-w-[1980px] mx-auto px-5 py-20 text-white">
 
-        <h2 className="text-3xl font-bold text-white text-center mb-8">
-          Kontaktieren Sie uns
-        </h2>
+      <h1 className="text-4xl font-bold mb-8 text-center">Kontakt</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-xl mx-auto bg-[#1a2a2f] p-8 rounded-2xl shadow-lg border border-white/10"
+      >
+        {/* Name */}
+        <label className="block text-lg mb-2">Name</label>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          type="text"
+          className="w-full p-3 rounded-xl bg-white/10 text-white outline-none mb-5"
+        />
 
-          <div>
-            <label className="text-white text-sm mb-1 block">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none"
-            />
-          </div>
+        {/* Email */}
+        <label className="block text-lg mb-2">E-Mail</label>
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          type="email"
+          className="w-full p-3 rounded-xl bg-white/10 text-white outline-none mb-5"
+        />
 
-          <div>
-            <label className="text-white text-sm mb-1 block">E-Mail</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none"
-            />
-          </div>
+        {/* Message */}
+        <label className="block text-lg mb-2">Nachricht</label>
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+          rows={5}
+          className="w-full p-3 rounded-xl bg-white/10 text-white outline-none mb-5"
+        ></textarea>
 
-          <div>
-            <label className="text-white text-sm mb-1 block">Nachricht</label>
-            <textarea
-              name="nachricht"
-              value={form.nachricht}
-              onChange={handleChange}
-              required
-              rows={5}
-              className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 outline-none resize-none"
-            ></textarea>
-          </div>
+        {/* Loading / Error / Success */}
+        {loading && (
+          <p className="text-yellow-300 text-center mb-3">
+            Wird gesendet...
+          </p>
+        )}
 
-          <button
-            type="submit"
-            className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition text-white font-semibold"
-            disabled={status === "loading"}
-          >
-            {status === "loading" ? "Wird gesendet..." : "Nachricht senden"}
-          </button>
+        {successMsg && (
+          <p className="text-green-400 text-center mb-3">{successMsg}</p>
+        )}
 
-          {status === "success" && (
-            <p className="text-green-300 text-center font-semibold">
-              Ihre Nachricht wurde erfolgreich gesendet!
-            </p>
-          )}
+        {errorMsg && (
+          <p className="text-red-400 text-center mb-3">{errorMsg}</p>
+        )}
 
-          {status === "error" && (
-            <p className="text-red-300 text-center font-semibold">
-              Es ist ein Fehler aufgetreten. Bitte erneut versuchen.
-            </p>
-          )}
-        </form>
-      </div>
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full py-3 mt-4 rounded-xl bg-gradient-to-r from-[#2c5364] to-[#0f2027] text-white font-bold hover:opacity-90 transition"
+        >
+          Senden
+        </button>
+      </form>
     </div>
   );
-};
+}
 
 export default Kontakt;

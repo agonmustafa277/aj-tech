@@ -11,10 +11,7 @@ const Cards = () => {
         grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
       "
       >
-        <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div className="w-[600px] h-[600px] bg-indigo-500 blur-[180px] rounded-full absolute -top-40 left-10"></div>
-        <div className="w-[500px] h-[500px] bg-cyan-400 blur-[180px] rounded-full absolute bottom-0 right-10"></div>
-      </div>
+  
         {/* CARD 1 – Webdesign */}
         <div className="card-container h-[340px] w-full perspective">
           <div className="card flip-card">

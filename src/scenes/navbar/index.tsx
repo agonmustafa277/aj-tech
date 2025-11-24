@@ -1,19 +1,26 @@
-const Navbar = () => {
-  return (
-    <div
-      className="
-        fixed top-0 left-0 w-full z-50
-        backdrop-blur-md bg-black/30
-        border-b border-white/20
-      "
-    >
+import React, { useState } from "react";
 
-      <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div className="w-[600px] h-[600px] bg-indigo-500 blur-[180px] rounded-full absolute -top-40 left-10"></div>
-        <div className="w-[500px] h-[500px] bg-cyan-400 blur-[180px] rounded-full absolute bottom-0 right-10"></div>
-      </div>
-      
-      <div className="relative w-full bg-linear-to-r from-[#2c5364] to-[#0f2027] max-w-[1980px] mx-auto flex items-center justify-between px-6 py-3">
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      {/* NAVBAR OUTER WRAPPER */}
+      <div
+        className="
+          fixed top-0 left-0 w-full z-50
+          backdrop-blur-md bg-black/30
+          border-b border-white/20
+        "
+      >
+        {/* Hintergrund-Lichter */}
+        <div className="absolute inset-0 opacity-40 pointer-events-none">
+          <div className="w-[600px] h-[600px] bg-indigo-500 blur-[180px] rounded-full absolute -top-40 left-10"></div>
+          <div className="w-[500px] h-[500px] bg-cyan-400 blur-[180px] rounded-full absolute bottom-0 right-10"></div>
+        </div>
+
+        {/* NAVBAR CONTENT */}
+        <div className="relative w-full bg-linear-to-r from-[#2c5364] to-[#0f2027] max-w-[1980px] mx-auto flex items-center justify-between px-6 py-3">
 
         {/* SVG LOGO */}
         <div className="inline-block size-10">
@@ -137,30 +144,70 @@ const Navbar = () => {
             />
           </svg>
         </div>
+          {/* DESKTOP MENU */}
+          <nav className="hidden md:flex">
+            <ul className="flex items-center gap-6 text-white text-lg">
+  <li><a href="#home" className="hover:text-cyan-400">Home</a></li>
+  <li><a href="#ueber-uns" className="hover:text-cyan-400">Über uns</a></li>
+  <li><a href="#service" className="hover:text-cyan-400">Service</a></li>
+  <li><a href="#kontakt" className="hover:text-cyan-400">Kontakt</a></li>
+</ul>
+          </nav>
 
-        {/* NAVIGATION LINKS */}
-        <nav>
-          <ul className="flex items-center gap-6 text-white text-lg">
-            <li><a href="/home" className="hover:text-cyan-400">Home</a></li>
-            <li><a href="/ueber_uns" className="hover:text-cyan-400">Über uns</a></li>
-            <li><a href="/service" className="hover:text-cyan-400">Service</a></li>
-            <li><a href="/kontakt" className="hover:text-cyan-400">Kontakt</a></li>
-          </ul>
-        </nav>
+          {/* DESKTOP BUTTON */}
+          <a
+            href="#kontakt"
+            className="
+              hidden md:block
+              bg-blue-600 text-white px-5 py-2 rounded-xl
+              hover:bg-blue-700 transition
+              whitespace-nowrap
+            "
+          >
+            Kontaktieren Sie uns jetzt!
+          </a>
 
-        {/* Button Rechts */}
-        <a
-          href="/kontakt"
-          className="
-            bg-blue-600 text-white px-5 py-2 rounded-xl
-            hover:bg-blue-700 transition
-            whitespace-nowrap
-          "
-        >
-          Kontaktieren Sie uns jetzt!
-        </a>
+          {/* MOBILE HAMBURGER */}
+          <button
+            className="md:hidden text-white text-3xl"
+            onClick={() => setOpen(true)}
+          >
+            ☰
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* MOBILE SLIDE-IN MENU */}
+      <div
+        className={`
+          fixed top-0 right-0 h-full w-64 bg-black/90 text-white z-[999]
+          transform transition-transform duration-300
+          ${open ? "translate-x-0" : "translate-x-full"}
+        `}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setOpen(false)}
+          className="absolute top-5 right-5 text-3xl"
+        >
+          ✕
+        </button>
+
+        <div className="pt-20 px-6 flex flex-col gap-6 text-lg">
+          <a href="#home" onClick={() => setOpen(false)}>Home</a>
+          <a href="#ueber_uns" onClick={() => setOpen(false)}>Über uns</a>
+          <a href="#service" onClick={() => setOpen(false)}>Service</a>
+          <a href="#kontakt" onClick={() => setOpen(false)}>Kontakt</a>
+
+          <a
+            href="#kontakt"
+            className="mt-6 bg-blue-600 py-2 rounded-xl text-center"
+          >
+            Kontaktieren Sie uns jetzt!
+          </a>
+        </div>
+      </div>
+    </>
   );
 };
 

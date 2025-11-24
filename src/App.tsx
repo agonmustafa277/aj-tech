@@ -4,7 +4,10 @@ import { gsap } from "gsap";
 import Cards from "@/scenes/cards";
 import UeberUns from "./scenes/ueber_uns";
 import Kontakt from "./scenes/Kontakt";
-import Hintergrund_hero from "@/assets/Hintergrund_hero.jpg";
+//import Hintergrund_hero from "./assets/hero.jpg";
+import Footer from "./scenes/Footer";
+
+
 
 function App() {
   useEffect(() => {
@@ -35,8 +38,8 @@ function App() {
       {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO-BEREICH – Text links, Bild rechts */}
-      <div
+      <div id="home" className="pt-32">
+        <div
         className="w-full max-w-[1980px] mx-auto px-5 py-16 
                    flex flex-col md:flex-row items-center md:items-center 
                    justify-between mt-10"
@@ -54,12 +57,17 @@ function App() {
 
         {/* BILD RECHTS */}
         <img
-          src={Hintergrund_hero}
+          src="/hero.jpg"
           alt="Hero"
           className="w-[320px] h-[320px] md:w-[820px] md:h-[500px] 
                      object-cover rounded-3xl shadow-xl"
         />
       </div>
+      </div>
+     
+
+      {/* HERO-BEREICH – Text links, Bild rechts */}
+      
 
       {/* LOADING SCREEN */}
       <div className="loading-page absolute inset-0 w-full h-screen 
@@ -186,9 +194,26 @@ function App() {
       </div>
 
       {/* RESTLICHER SEITENINHALT */}
-      <Cards />
-      <UeberUns />
-      <Kontakt />
+      <section id="service" className="pt-20">
+        <Cards />
+      </section>
+      
+      <section id="ueber-uns" className="pt-20">
+        <UeberUns />
+      </section>
+      
+      <section id="kontakt" className="pt-32">
+         <Kontakt />
+      </section>
+     
+      {/*<Routes>
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+  </Routes>*/}
+      
+
+      
+      <Footer />
     </div>
   );
 }

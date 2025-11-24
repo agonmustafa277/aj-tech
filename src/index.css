@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   .animate-dash {
     stroke-dasharray: 4500;
