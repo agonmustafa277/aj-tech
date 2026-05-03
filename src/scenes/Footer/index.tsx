@@ -1,92 +1,79 @@
-import React from "react";
 import { Link } from "react-router-dom";
-//import Logo from "@/Assets/Logo_rand.svg"; // dein echtes SVG
+
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const Footer = () => {
-  return (
-    <footer className="w-full backdrop-blur-xl bg-white/10 text-white py-12 px-6 border-t border-white/20 shadow-xl">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+  const { t } = useLanguage();
 
-        {/* LOGO + BESCHREIBUNG */}
+  return (
+    <footer className="w-full border-t border-white/10 bg-slate-950 px-4 py-12 text-white sm:px-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-4">
         <div className="flex flex-col gap-4">
           <img
-            src="/Logo_rand.svg"
-            alt="AJ Tech Logo"
-            className="w-28 h-auto drop-shadow-xl"
+            src="/aj-tech-logo.png"
+            alt="AJ-Tech Logo"
+            className="w-40 max-w-full"
           />
 
-          <p className="text-gray-200 text-sm leading-relaxed">
-            AJ Tech – Innovative Lösungen für Software, Automatisierung und digitale Prozesse.
+          <p className="text-sm leading-relaxed text-slate-300">
+            {t.footer.description}
           </p>
 
-          {/* SOCIAL ICONS */}
-          <div className="flex gap-4 mt-3">
-
-            {/* LinkedIn */}
-            <a
-              href="#"
-              className="hover:text-blue-300 transition"
-              aria-label="LinkedIn"
-            >
-              <i className="lab la-linkedin text-2xl"></i>
-            </a>
-
-            {/* Instagram */}
-            <a
-              href="#"
-              className="hover:text-pink-300 transition"
-              aria-label="Instagram"
-            >
-              <i className="lab la-instagram text-2xl"></i>
-            </a>
-
-            {/* Email */}
-            <a
-              href="mailto:agon.mustafa@aj-tech.de"
-              className="hover:text-green-300 transition"
-              aria-label="Email"
-            >
-              <i className="las la-envelope text-2xl"></i>
-            </a>
-          </div>
+          <a
+            href="mailto:kontakt@aj-tech.de"
+            className="text-sm font-bold text-slate-300 transition hover:text-blue-300"
+          >
+            kontakt@aj-tech.de
+          </a>
         </div>
 
-        {/* LEISTUNGEN */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Leistungen</h3>
-          <ul className="space-y-2 text-gray-100 text-sm">
-            <li>Softwareentwicklung</li>
-            <li>Automatisierung</li>
-            <li>Webentwicklung</li>
-            <li>Digitalisierung</li>
+          <h3 className="mb-3 text-lg font-black">{t.footer.servicesTitle}</h3>
+
+          <ul className="space-y-2 text-sm text-slate-300">
+            {t.footer.services.map((service) => (
+              <li key={service}>{service}</li>
+            ))}
           </ul>
         </div>
 
-        {/* RECHTLICH */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Rechtliches</h3>
-          <ul className="space-y-2 text-gray-100 text-sm">
-            <li><Link to="/datenschutz">Datenschutz</Link></li>
-            <li><Link to="/impressum">Impressum</Link></li>
+          <h3 className="mb-3 text-lg font-black">{t.footer.legalTitle}</h3>
+
+          <ul className="space-y-2 text-sm text-slate-300">
+            <li>
+              <Link to="/datenschutz" className="transition hover:text-blue-300">
+                {t.footer.privacy}
+              </Link>
+            </li>
+            <li>
+              <Link to="/impressum" className="transition hover:text-blue-300">
+                {t.footer.imprint}
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* KONTAKT */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Kontakt</h3>
-          <ul className="space-y-2 text-gray-100 text-sm">
+          <h3 className="mb-3 text-lg font-black">{t.footer.contactTitle}</h3>
+
+          <ul className="space-y-2 text-sm text-slate-300">
             <li>A.J. Tech</li>
             <li>Inh.: Agon Mustafa</li>
             <li>Mechernicher Weg 88</li>
             <li>53894 Mechernich</li>
             <li>Deutschland</li>
+            <li>
+              <a href="/#kontakt" className="transition hover:text-blue-300">
+                {t.footer.analysis}
+              </a>
+            </li>
           </ul>
         </div>
-
       </div>
 
-      <div className="text-center text-gray-200 text-sm mt-10 border-t border-white/20 pt-6">
-        © {new Date().getFullYear()} AJ Tech – Alle Rechte vorbehalten.
+      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-center text-sm text-slate-400">
+        © {new Date().getFullYear()} AJ-Tech – {t.footer.rights}
       </div>
     </footer>
   );

@@ -165,7 +165,7 @@ function Kontakt() {
       {showSuccess && (
         <div
           className="
-            fixed inset-0 flex items-center justify-center z-[999]
+            fixed inset-0 flex items-center justify-center z-999
             bg-black/50 backdrop-blur-sm
           "
         >

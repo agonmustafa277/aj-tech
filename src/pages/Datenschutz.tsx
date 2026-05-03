@@ -1,128 +1,410 @@
-import React from 'react'
-
-function Datenschutz() {
+const Datenschutz = () => {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-20 text-white space-y-6">
-      <div dangerouslySetInnerHTML={{ __html: `
-<h1>Datenschutz&shy;erkl&auml;rung</h1>
-<h2>1. Datenschutz auf einen Blick</h2>
-<h3>Allgemeine Hinweise</h3> <p>Die folgenden Hinweise geben einen einfachen &Uuml;berblick dar&uuml;ber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie pers&ouml;nlich identifiziert werden k&ouml;nnen. Ausf&uuml;hrliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgef&uuml;hrten Datenschutzerkl&auml;rung.</p>
+    <main className="min-h-screen bg-white px-4 py-20 text-slate-950 sm:px-6">
+      <section className="mx-auto max-w-4xl">
+        <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
+          Datenschutzerklärung
+        </h1>
 
-<h3>Datenerfassung auf dieser Website</h3>
-<h4>Wer ist verantwortlich f&uuml;r die Datenerfassung auf dieser Website?</h4>
-<p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten k&ouml;nnen Sie dem Abschnitt &bdquo;Hinweis zur Verantwortlichen Stelle&ldquo; in dieser Datenschutzerkl&auml;rung entnehmen.</p>
+        <div className="mt-10 space-y-10 text-slate-700">
+          <InfoBlock title="1. Datenschutz auf einen Blick">
+            <SubBlock title="Allgemeine Hinweise">
+              <p>
+                Die folgenden Hinweise geben einen einfachen Überblick darüber,
+                was mit Ihren personenbezogenen Daten passiert, wenn Sie diese
+                Website besuchen. Personenbezogene Daten sind alle Daten, mit
+                denen Sie persönlich identifiziert werden können.
+              </p>
+            </SubBlock>
 
-<h4>Wie erfassen wir Ihre Daten?
-<p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.&nbsp;B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
-<p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.&nbsp;B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
+            <SubBlock title="Datenerfassung auf dieser Website">
+              <p>
+                Die Datenverarbeitung auf dieser Website erfolgt durch den
+                Websitebetreiber. Dessen Kontaktdaten finden Sie im Abschnitt
+                „Hinweis zur verantwortlichen Stelle“.
+              </p>
+            </SubBlock>
 
-<h4>Wof&uuml;r nutzen wir Ihre Daten?</h4>
-<p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gew&auml;hrleisten. Andere Daten k&ouml;nnen zur Analyse Ihres Nutzerverhaltens verwendet werden. Sofern &uuml;ber die Website Vertr&auml;ge geschlossen oder angebahnt werden k&ouml;nnen, werden die &uuml;bermittelten Daten auch f&uuml;r Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet.</p>
+            <SubBlock title="Wie erfassen wir Ihre Daten?">
+              <p>
+                Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese
+                mitteilen. Hierbei kann es sich zum Beispiel um Daten handeln,
+                die Sie in ein Kontaktformular eingeben oder per E-Mail an uns
+                senden.
+              </p>
 
-<h4>Welche Rechte haben Sie bez&uuml;glich Ihrer Daten?</h4>
-<p>Sie haben jederzeit das Recht, unentgeltlich Auskunft &uuml;ber Herkunft, Empf&auml;nger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben au&szlig;erdem ein Recht, die Berichtigung oder L&ouml;schung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, k&ouml;nnen Sie diese Einwilligung jederzeit f&uuml;r die Zukunft widerrufen. Au&szlig;erdem haben Sie das Recht, unter bestimmten Umst&auml;nden die Einschr&auml;nkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zust&auml;ndigen Aufsichtsbeh&ouml;rde zu.</p>
-<p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz k&ouml;nnen Sie sich jederzeit an uns wenden.</p>
+              <p>
+                Andere Daten werden automatisch oder nach Ihrer Einwilligung beim
+                Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor
+                allem technische Daten wie Internetbrowser, Betriebssystem oder
+                Uhrzeit des Seitenaufrufs.
+              </p>
+            </SubBlock>
 
-<h2>2. Hosting</h2>
-<p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+            <SubBlock title="Wofür nutzen wir Ihre Daten?">
+              <p>
+                Ein Teil der Daten wird erhoben, um eine fehlerfreie
+                Bereitstellung der Website zu gewährleisten. Andere Daten können
+                zur Analyse des Nutzerverhaltens oder zur Bearbeitung von
+                Anfragen verwendet werden.
+              </p>
+            </SubBlock>
 
-<h3>Externes Hosting</h3>
-<p>Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters / der Hoster gespeichert...</p>
+            <SubBlock title="Welche Rechte haben Sie bezüglich Ihrer Daten?">
+              <p>
+                Sie haben jederzeit das Recht, unentgeltlich Auskunft über
+                Herkunft, Empfänger und Zweck Ihrer gespeicherten
+                personenbezogenen Daten zu erhalten. Außerdem haben Sie ein Recht
+                auf Berichtigung, Löschung oder Einschränkung der Verarbeitung
+                dieser Daten.
+              </p>
 
-<p>hosting.de</p>
+              <p>
+                Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben,
+                können Sie diese Einwilligung jederzeit für die Zukunft
+                widerrufen. Zudem steht Ihnen ein Beschwerderecht bei der
+                zuständigen Aufsichtsbehörde zu.
+              </p>
+            </SubBlock>
+          </InfoBlock>
 
-<h4>Auftragsverarbeitung</h4>
-<p>Wir haben einen Vertrag &uuml;ber Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen...</p>
+          <InfoBlock title="2. Hosting">
+            <SubBlock title="Externes Hosting">
+              <p>
+                Diese Website wird extern gehostet. Die personenbezogenen Daten,
+                die auf dieser Website erfasst werden, werden auf den Servern des
+                Hosters gespeichert.
+              </p>
 
-<h2>3. Allgemeine Hinweise und Pflicht&shy;informationen</h2>
-<h3>Datenschutz</h3>
-<p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer pers&ouml;nlichen Daten sehr ernst...</p>
+              <p>
+                Der Einsatz des Hosters erfolgt zum Zweck einer sicheren,
+                schnellen und effizienten Bereitstellung unseres Online-Angebots
+                durch einen professionellen Anbieter.
+              </p>
+            </SubBlock>
 
-<h3>Hinweis zur verantwortlichen Stelle</h3>
-<p>Agon Mustafa<br/>Telefon: +491738828927<br/>E-Mail: agon.mustafa@aj-tech.de</p>
+            <SubBlock title="Hosting-Anbieter">
+              <p>hosting.de</p>
+            </SubBlock>
 
-<h3>Speicherdauer</h3>
-<p>Soweit innerhalb dieser Datenschutzerkl&auml;rung keine speziellere Speicherdauer genannt wurde...</p>
+            <SubBlock title="Auftragsverarbeitung">
+              <p>
+                Wir haben einen Vertrag über Auftragsverarbeitung zur Nutzung des
+                oben genannten Dienstes geschlossen. Dieser Vertrag stellt
+                sicher, dass der Anbieter personenbezogene Daten nur nach unseren
+                Weisungen und unter Einhaltung der DSGVO verarbeitet.
+              </p>
+            </SubBlock>
+          </InfoBlock>
 
-<h3>Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung...</h3>
-<p>Sofern Sie in die Datenverarbeitung eingewilligt haben...</p>
+          <InfoBlock title="3. Allgemeine Hinweise und Pflichtinformationen">
+            <SubBlock title="Datenschutz">
+              <p>
+                Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen
+                Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten
+                vertraulich und entsprechend den gesetzlichen
+                Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+              </p>
+            </SubBlock>
 
-<h3>Empf&auml;nger von personenbezogenen Daten</h3>
-<p>Im Rahmen unserer Gesch&auml;ftst&auml;tigkeit arbeiten wir mit verschiedenen externen Stellen zusammen...</p>
+            <SubBlock title="Hinweis zur verantwortlichen Stelle">
+              <p>
+                Verantwortliche Stelle für die Datenverarbeitung auf dieser
+                Website ist:
+              </p>
 
-<h3>Widerruf Ihrer Einwilligung...</h3>
-<p>Viele Datenverarbeitungsvorg&auml;nge sind nur mit Ihrer ausdr&uuml;cklichen Einwilligung m&ouml;glich...</p>
+              <p>
+                Agon Mustafa
+                <br />
+                Mechernicher Weg 88
+                <br />
+                53894 Mechernich
+                <br />
+                Deutschland
+              </p>
 
-<h3>Widerspruchsrecht...</h3>
-<p>WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT...</p>
+              <p>
+                Telefon:{" "}
+                <a
+                  href="tel:+491738828927"
+                  className="font-bold text-blue-600 transition hover:text-blue-700"
+                >
+                  +49 173 8828927
+                </a>
+                <br />
+                E-Mail:{" "}
+                <a
+                  href="mailto:agon.mustafa@aj-tech.de"
+                  className="font-bold text-blue-600 transition hover:text-blue-700"
+                >
+                  agon.mustafa@aj-tech.de
+                </a>
+              </p>
+            </SubBlock>
 
-<h3>Beschwerderecht</h3>
-<p>Im Falle von Verst&ouml;&szlig;en gegen die DSGVO...</p>
+            <SubBlock title="Speicherdauer">
+              <p>
+                Soweit innerhalb dieser Datenschutzerklärung keine speziellere
+                Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen
+                Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.
+                Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine
+                Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten
+                gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten
+                entgegenstehen.
+              </p>
+            </SubBlock>
 
-<h3>Recht auf Daten&uuml;bertragbarkeit</h3>
-<p>Sie haben das Recht...</p>
+            <SubBlock title="Rechtsgrundlagen der Datenverarbeitung">
+              <p>
+                Sofern Sie in die Datenverarbeitung eingewilligt haben,
+                verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von
+                Art. 6 Abs. 1 lit. a DSGVO. Sofern die Verarbeitung zur
+                Erfüllung eines Vertrags oder zur Durchführung vorvertraglicher
+                Maßnahmen erforderlich ist, erfolgt die Verarbeitung auf
+                Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+              </p>
 
-<h3>Auskunft, Berichtigung und L&ouml;schung</h3>
-<p>Sie haben im Rahmen...</p>
+              <p>
+                In anderen Fällen erfolgt die Verarbeitung auf Grundlage unseres
+                berechtigten Interesses an einer technisch fehlerfreien,
+                sicheren und wirtschaftlichen Bereitstellung unserer Website
+                gemäß Art. 6 Abs. 1 lit. f DSGVO.
+              </p>
+            </SubBlock>
 
-<h3>Recht auf Einschr&auml;nkung der Verarbeitung</h3>
-<p>Sie haben das Recht...</p>
+            <SubBlock title="Empfänger personenbezogener Daten">
+              <p>
+                Im Rahmen unserer Geschäftstätigkeit arbeiten wir mit externen
+                Stellen zusammen. Dabei werden personenbezogene Daten nur
+                weitergegeben, wenn dies zur Vertragserfüllung erforderlich ist,
+                eine gesetzliche Pflicht besteht, eine Einwilligung vorliegt oder
+                ein berechtigtes Interesse besteht.
+              </p>
+            </SubBlock>
 
-<h3>SSL- bzw. TLS-Verschl&uuml;sselung</h3>
-<p>Diese Seite nutzt...</p>
+            <SubBlock title="Widerruf Ihrer Einwilligung">
+              <p>
+                Viele Datenverarbeitungsvorgänge sind nur mit Ihrer
+                ausdrücklichen Einwilligung möglich. Sie können eine bereits
+                erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit
+                der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom
+                Widerruf unberührt.
+              </p>
+            </SubBlock>
 
-<h3>Widerspruch gegen Werbe-E-Mails</h3>
-<p>Der Nutzung von im Rahmen der Impressumspflicht...</p>
+            <SubBlock title="Widerspruchsrecht">
+              <p>
+                Wenn die Datenverarbeitung auf Grundlage von Art. 6 Abs. 1 lit.
+                e oder f DSGVO erfolgt, haben Sie jederzeit das Recht, aus
+                Gründen, die sich aus Ihrer besonderen Situation ergeben, gegen
+                die Verarbeitung Ihrer personenbezogenen Daten Widerspruch
+                einzulegen.
+              </p>
+            </SubBlock>
 
-<h2>4. Datenerfassung auf dieser Website</h2>
-<h3>Cookies</h3>
-<p>Unsere Internetseiten verwenden Cookies...</p>
+            <SubBlock title="Beschwerderecht">
+              <p>
+                Im Falle von Verstößen gegen die DSGVO steht Ihnen ein
+                Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu.
+              </p>
+            </SubBlock>
 
-<h3>Server-Log-Dateien</h3>
-<p>Der Provider der Seiten erhebt automatisch Informationen...</p>
+            <SubBlock title="Recht auf Datenübertragbarkeit">
+              <p>
+                Sie haben das Recht, Daten, die wir auf Grundlage Ihrer
+                Einwilligung oder in Erfüllung eines Vertrags automatisiert
+                verarbeiten, an sich oder an einen Dritten in einem gängigen,
+                maschinenlesbaren Format aushändigen zu lassen.
+              </p>
+            </SubBlock>
 
-<h3>Kontaktformular</h3>
-<p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen...</p>
+            <SubBlock title="Auskunft, Berichtigung und Löschung">
+              <p>
+                Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen
+                jederzeit das Recht auf unentgeltliche Auskunft über Ihre
+                gespeicherten personenbezogenen Daten, deren Herkunft und
+                Empfänger sowie den Zweck der Datenverarbeitung. Außerdem haben
+                Sie ein Recht auf Berichtigung oder Löschung dieser Daten.
+              </p>
+            </SubBlock>
 
-<h3>Anfrage per E-Mail, Telefon oder Telefax</h3>
-<p>Wenn Sie uns per E-Mail oder Telefon kontaktieren...</p>
+            <SubBlock title="Recht auf Einschränkung der Verarbeitung">
+              <p>
+                Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer
+                personenbezogenen Daten zu verlangen, sofern die gesetzlichen
+                Voraussetzungen erfüllt sind.
+              </p>
+            </SubBlock>
 
-<h2>5. Soziale Medien</h2>
-<h3>Facebook</h3>
-<p>Auf dieser Website sind Elemente des sozialen Netzwerks Facebook integriert...</p>
+            <SubBlock title="SSL- bzw. TLS-Verschlüsselung">
+              <p>
+                Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der
+                Übertragung vertraulicher Inhalte eine SSL- bzw.
+                TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie
+                daran, dass die Adresszeile des Browsers mit „https://“ beginnt.
+              </p>
+            </SubBlock>
 
-<h3>X (ehemals Twitter)</h3>
-<p>Auf dieser Website sind Funktionen des Dienstes X eingebunden...</p>
+            <SubBlock title="Widerspruch gegen Werbe-E-Mails">
+              <p>
+                Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten
+                Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter
+                Werbung und Informationsmaterialien wird hiermit widersprochen.
+              </p>
+            </SubBlock>
+          </InfoBlock>
 
-<h3>Instagram</h3>
-<p>Auf dieser Website sind Funktionen von Instagram integriert...</p>
+          <InfoBlock title="4. Datenerfassung auf dieser Website">
+            <SubBlock title="Cookies">
+              <p>
+                Unsere Internetseiten können Cookies verwenden. Cookies richten
+                auf Ihrem Endgerät keinen Schaden an und enthalten keine Viren.
+                Sie dienen dazu, unser Angebot nutzerfreundlicher, effektiver und
+                sicherer zu machen.
+              </p>
+            </SubBlock>
 
-<h2>6. Newsletter</h2>
-<h3>Newsletterdaten</h3>
-<p>Wenn Sie den Newsletter beziehen möchten...</p>
+            <SubBlock title="Server-Log-Dateien">
+              <p>
+                Der Provider der Seiten erhebt und speichert automatisch
+                Informationen in sogenannten Server-Log-Dateien, die Ihr Browser
+                automatisch an uns übermittelt. Dies können Browsertyp,
+                Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners,
+                Uhrzeit der Serveranfrage und IP-Adresse sein.
+              </p>
 
-<h3>Newsletterversand an Bestandskunden</h3>
-<p>Wenn Sie Waren oder Dienstleistungen bestellen...</p>
+              <p>
+                Eine Zusammenführung dieser Daten mit anderen Datenquellen wird
+                nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf
+                Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+              </p>
+            </SubBlock>
 
-<h2>7. Plugins und Tools</h2>
-<h3>Google Fonts (lokal)</h3>
-<p>Diese Seite nutzt Google Fonts...</p>
+            <SubBlock title="Kontaktformular">
+              <p>
+                Wenn Sie uns per Kontaktformular Anfragen zukommen lassen,
+                werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort
+                angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für
+                den Fall von Anschlussfragen bei uns gespeichert.
+              </p>
+            </SubBlock>
 
-<h3>Font Awesome</h3>
-<p>Diese Seite nutzt Font Awesome...</p>
+            <SubBlock title="Anfrage per E-Mail oder Telefon">
+              <p>
+                Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre
+                Anfrage inklusive aller daraus hervorgehenden personenbezogenen
+                Daten zum Zweck der Bearbeitung Ihres Anliegens bei uns
+                gespeichert und verarbeitet.
+              </p>
+            </SubBlock>
+          </InfoBlock>
 
-<h3>MyFonts</h3>
-<p>Diese Seite nutzt MyFonts...</p>
+          <InfoBlock title="5. Soziale Medien">
+            <SubBlock title="Facebook, X und Instagram">
+              <p>
+                Sofern auf dieser Website Verlinkungen oder Elemente sozialer
+                Netzwerke eingebunden sind, können beim Aufruf entsprechender
+                Inhalte personenbezogene Daten an die jeweiligen Anbieter
+                übertragen werden. Nutzen Sie solche Links oder Funktionen nur,
+                wenn Sie mit der Datenverarbeitung durch den jeweiligen Anbieter
+                einverstanden sind.
+              </p>
+            </SubBlock>
+          </InfoBlock>
 
-<h3>Google Maps</h3>
-<p>Diese Seite nutzt Google Maps...</p>
+          <InfoBlock title="6. Newsletter">
+            <SubBlock title="Newsletterdaten">
+              <p>
+                Wenn Sie einen Newsletter beziehen möchten, benötigen wir eine
+                E-Mail-Adresse sowie Informationen, die uns die Überprüfung
+                gestatten, dass Sie Inhaber der angegebenen E-Mail-Adresse sind
+                und mit dem Empfang des Newsletters einverstanden sind.
+              </p>
+            </SubBlock>
 
-<p>Quelle: https://www.e-recht24.de</p>
-      `}} />
-    </div>
+            <SubBlock title="Newsletterversand an Bestandskunden">
+              <p>
+                Wenn Sie Waren oder Dienstleistungen bei uns bestellen und dabei
+                Ihre E-Mail-Adresse hinterlegen, kann diese anschließend für den
+                Versand eigener ähnlicher Angebote verwendet werden, sofern dies
+                gesetzlich zulässig ist.
+              </p>
+            </SubBlock>
+          </InfoBlock>
 
+          <InfoBlock title="7. Plugins und Tools">
+            <SubBlock title="Google Fonts">
+              <p>
+                Diese Seite kann Google Fonts lokal verwenden. Bei lokaler
+                Einbindung wird keine Verbindung zu Servern von Google
+                hergestellt.
+              </p>
+            </SubBlock>
 
-  )
+            <SubBlock title="Font Awesome / Icon-Fonts">
+              <p>
+                Diese Seite kann Icon-Fonts oder vergleichbare Symbolbibliotheken
+                verwenden. Wenn diese lokal eingebunden sind, findet keine
+                externe Datenübertragung an den Anbieter statt.
+              </p>
+            </SubBlock>
+
+            <SubBlock title="Google Maps">
+              <p>
+                Sofern Google Maps auf dieser Website eingebunden wird, können
+                Daten an Google übertragen werden. Google Maps sollte nur nach
+                vorheriger Einwilligung geladen werden.
+              </p>
+            </SubBlock>
+          </InfoBlock>
+
+          <p className="text-sm text-slate-500">
+            Quelle:{" "}
+            <a
+              href="https://www.e-recht24.de"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold text-blue-600 transition hover:text-blue-700"
+            >
+              e-recht24.de
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+function InfoBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+      <h2 className="text-2xl font-black text-slate-950">{title}</h2>
+
+      <div className="mt-6 space-y-6">{children}</div>
+    </section>
+  );
 }
 
-export default Datenschutz
+function SubBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section>
+      <h3 className="text-xl font-black text-slate-950">{title}</h3>
+
+      <div className="mt-3 space-y-3 leading-relaxed">{children}</div>
+    </section>
+  );
+}
+
+export default Datenschutz;

@@ -1,215 +1,477 @@
-import Navbar from "./scenes/navbar";
 import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import { gsap } from "gsap";
-import Cards from "./scenes/cards";
-import UeberUns from "./scenes/ueber_uns";
-import Kontakt from "./scenes/Kontakt";
+
+import Navbar from "./scenes/navbar";
 import Footer from "./scenes/Footer";
+import Datenschutz from "./pages/Datenschutz";
+import Impressum from "./pages/Impressum";
+import { useLanguage } from "./i18n/LanguageContext";
 
-function App() {
+function Home() {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    const tl = gsap.timeline();
+    const timeline = gsap.timeline();
 
-    tl.to(".loading-page", {
+    timeline.to(".loading-page", {
       opacity: 0,
-      duration: 1.5,
-      delay: 2.5,
+      duration: 1.2,
+      delay: 1.8,
+      ease: "power2.out",
     });
 
-    tl.set(".loading-page", { display: "none" });
+    timeline.set(".loading-page", {
+      display: "none",
+      pointerEvents: "none",
+    });
 
-    tl.fromTo(
-      ".logo-name",
-      { opacity: 0, y: 5 },
-      { opacity: 1, y: 0, duration: 1.5, delay: -1 }
-    );
+    return () => {
+      timeline.kill();
+    };
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden 
-                    bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+    <main className="relative min-h-screen overflow-x-hidden bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+      <section
+        id="top"
+        className="relative w-full overflow-hidden px-4 pb-20 pt-20 text-white sm:px-6 md:pb-28 md:pt-28"
+      >
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
+          <div className="max-w-3xl">
+            <span className="inline-flex max-w-full rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-blue-100 backdrop-blur">
+              {t.hero.badge}
+            </span>
 
-      {/* Hintergrund-Effekte */}
-      <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <div className="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-indigo-500 blur-[160px] rounded-full absolute -top-20 left-10"></div>
-        <div className="w-[250px] h-[250px] sm:w-[450px] sm:h-[450px] bg-cyan-400 blur-[160px] rounded-full absolute bottom-0 right-10"></div>
-      </div>
-
-      {/* NAVBAR */}
-      <Navbar />
-
-      {/* HERO SECTION */}
-      <section id="home" className="pt-28 sm:pt-36 lg:pt-40">
-        <div
-          className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10
-                     flex flex-col md:flex-row items-center justify-between"
-        >
-          {/* TEXT */}
-          <div className="text-white max-w-lg text-center md:text-left md:max-w-xl px-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Willkommen bei <span className="font-extrabold">A.J. Tech</span>
+            <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              {t.hero.title}
             </h1>
 
-            <h2 className="mt-4 text-xl sm:text-2xl lg:text-3xl leading-snug">
-              Innovative Lösungen für die digitale Zukunft.
-            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg">
+              {t.hero.text}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#kontakt"
+                className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:bg-blue-700 sm:text-base"
+              >
+                {t.hero.primary}
+              </a>
+
+              <a
+                href="#leistungen"
+                className="inline-flex justify-center rounded-full border border-white/20 bg-white px-6 py-3 text-sm font-extrabold text-slate-950 transition hover:border-blue-400 hover:text-blue-600 sm:text-base"
+              >
+                {t.hero.secondary}
+              </a>
+            </div>
           </div>
 
-          {/* BILD */}
-          <img
-            src="/hero.jpg"
-            alt="Hero"
-            className="
-              w-[360px] h-[360px] 
-              sm:w-[480px] sm:h-[480px] 
-              md:w-[520px] md:h-[520px]
-              lg:w-[650px] lg:h-[450px]
-              xl:w-[780px] xl:h-[500px]
-              object-cover rounded-3xl shadow-xl mt-10 md:mt-0"
-          />
+          <aside className="w-full rounded-3xl border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur sm:p-7">
+            <h2 className="text-2xl font-black">{t.hero.cardTitle}</h2>
+
+            <ul className="mt-6 grid gap-4">
+              {t.hero.points.map((point) => (
+                <li key={point} className="flex gap-3 text-slate-100">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-400/20 text-sm font-black text-green-300">
+                    ✓
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </section>
 
-      {/* LOADING SCREEN */}
-      <div
-        className="loading-page absolute inset-0 w-full h-screen 
-                   bg-gradient-to-r from-[#2c5364] to-[#0f2027] 
-                   flex flex-col items-center justify-center gap-3 z-[60]"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 500 500"
-          className="w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40"
-        >
-          <path
-            className="animate-dash"
-            fill="none"
-            stroke="white"
-            strokeWidth="1.5"
-            d="M 148.00,213.00
-           C 148.00,213.00 91.00,255.58 91.00,255.58
-             91.00,255.58 46.00,288.73 46.00,288.73
-             39.98,293.16 28.14,302.69 22.00,305.60
-             9.27,311.64 -3.47,300.77 2.97,287.04
-             5.28,282.10 12.57,277.17 17.00,274.00
-             17.00,274.00 46.00,253.00 46.00,253.00
-             46.00,253.00 71.00,235.04 71.00,235.04
-             71.00,235.04 143.00,182.87 143.00,182.87
-             143.00,182.87 184.00,152.58 184.00,152.58
-             186.71,150.48 195.76,142.53 199.26,145.04
-             201.66,146.75 200.42,151.56 200.16,154.00
-             200.16,154.00 196.79,178.00 196.79,178.00
-             192.15,202.76 194.41,221.52 177.86,242.91
-             170.90,251.90 162.44,259.52 152.00,264.38
-             148.97,265.56 142.45,268.04 139.91,264.38
-             138.63,262.54 139.39,259.23 139.91,257.00
-             139.91,257.00 143.40,240.00 143.40,240.00
-             143.40,240.00 148.00,213.00 148.00,213.00 Z
-           M 259.00,163.25
-           C 261.44,163.13 263.52,162.90 266.00,163.25
-             280.39,163.87 274.26,178.66 269.50,186.00
-             257.18,205.01 235.55,235.39 221.49,253.00
-             198.82,281.40 153.07,309.99 117.00,316.39
-             104.22,318.65 84.41,318.15 71.00,318.00
-             67.27,317.95 60.33,317.48 57.39,315.11
-             51.83,310.62 52.07,297.72 55.39,292.00
-             61.74,281.06 74.74,275.15 87.00,275.00
-             87.00,275.00 103.00,275.00 103.00,275.00
-             103.00,275.00 115.00,275.90 115.00,275.90
-             115.00,275.90 133.00,274.56 133.00,274.56
-             149.82,271.91 172.27,257.05 183.97,244.99
-             191.39,237.33 205.33,218.61 209.69,209.00
-             214.94,197.44 211.54,195.44 214.60,191.18
-             215.94,189.31 224.64,182.89 227.00,181.15
-             237.15,173.68 246.48,166.41 259.00,163.25 Z
-           M 261.00,225.00
-           C 262.54,219.63 266.96,211.83 272.04,209.17
-             275.30,207.47 283.11,208.00 287.00,208.00
-             287.00,208.00 320.00,208.00 320.00,208.00
-             333.07,208.09 325.51,215.19 319.00,224.00
-             331.58,219.91 342.91,220.85 356.00,221.00
-             359.69,221.05 366.88,221.45 369.40,224.43
-             372.54,228.14 368.95,233.72 366.80,237.00
-             360.02,247.30 359.10,252.98 346.00,253.00
-             346.00,253.00 323.00,253.00 323.00,253.00
-             318.06,253.01 316.77,252.49 313.00,256.00
-             313.00,256.00 324.00,256.00 324.00,256.00
-             333.06,255.99 343.16,253.49 352.00,256.00
-             347.10,270.36 333.33,270.00 321.00,270.00
-             321.00,270.00 303.00,270.00 303.00,270.00
-             298.94,270.04 290.75,271.67 288.96,266.78
-             286.66,260.52 297.86,246.80 301.58,242.00
-             309.13,232.25 306.07,234.63 316.00,226.00
-             316.00,226.00 307.00,226.00 307.00,226.00
-             305.18,226.01 302.73,225.95 301.04,226.60
-             296.80,228.23 290.58,238.04 287.93,242.00
-             287.93,242.00 275.14,260.00 275.14,260.00
-             273.29,262.58 270.34,267.25 267.70,268.83
-             263.19,271.53 253.03,271.22 248.00,270.00
-             248.00,270.00 259.28,252.00 259.28,252.00
-             259.28,252.00 277.00,227.00 277.00,227.00
-             277.00,227.00 261.00,225.00 261.00,225.00 Z
-           M 411.00,270.00
-           C 412.42,262.55 416.34,259.03 420.49,253.00
-             420.49,253.00 443.28,221.00 443.28,221.00
-             448.58,213.43 449.97,208.14 460.00,208.00
-             464.64,207.94 466.44,207.89 471.00,209.00
-             471.00,209.00 464.00,223.00 464.00,223.00
-             474.64,220.86 472.82,220.87 484.00,221.00
-             487.87,221.05 494.47,221.35 496.73,225.06
-             499.45,229.51 491.79,239.27 489.26,243.00
-             489.26,243.00 476.65,261.00 476.65,261.00
-             474.49,264.14 471.53,268.62 467.91,270.11
-             464.69,271.43 454.94,271.00 451.00,271.00
-             452.65,262.32 466.81,246.02 472.00,237.00
-             466.05,237.00 456.02,236.04 451.47,240.31
-             451.47,240.31 437.07,260.00 437.07,260.00
-             432.99,266.11 431.90,269.85 424.00,270.00
-             424.00,270.00 411.00,270.00 411.00,270.00 Z
-           M 378.00,254.79
-           C 381.32,255.00 391.42,255.24 394.00,254.79
-             399.50,253.15 400.25,249.49 408.00,249.04
-             410.65,248.89 418.34,248.09 418.26,252.15
-             418.20,254.70 414.39,259.10 412.71,260.99
-             401.89,273.14 387.84,271.02 373.00,271.00
-             369.88,271.00 356.50,270.25 354.43,268.83
-             353.06,267.88 352.48,266.57 352.32,264.96
-             351.75,259.43 359.70,249.44 362.98,245.00
-             368.46,237.58 372.78,230.19 381.00,225.21
-             390.17,219.65 409.19,220.95 420.00,221.00
-             422.58,221.01 425.50,220.99 428.00,221.72
-             438.03,224.65 432.56,236.06 426.70,240.40
-             423.94,242.45 419.34,242.06 416.00,242.00
-             411.20,241.91 409.87,241.93 409.00,237.00
-             405.58,237.00 394.56,236.64 392.00,237.60
-             387.39,239.32 380.57,250.54 378.00,254.79 Z
-           M 464.00,223.00
-           C 464.00,223.00 463.00,223.00 463.00,223.00
-             463.00,223.00 464.00,224.00 464.00,224.00
-             464.00,224.00 464.00,223.00 464.00,223.00 Z
-           M 345.00,237.00
-           C 345.00,237.00 327.41,237.57 327.41,237.57
-             327.41,237.57 325.00,240.00 325.00,240.00
-             325.00,240.00 342.71,239.41 342.71,239.41
-             342.71,239.41 345.00,237.00 345.00,237.00 Z"
+      <section id="probleme" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <SectionHead
+            eyebrow={t.problem.eyebrow}
+            title={t.problem.title}
+            text={t.problem.text}
           />
-        </svg>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {t.problem.cards.map((card, index) => (
+              <article
+                key={card.title}
+                className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-xl"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 font-black text-blue-600">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <h3 className="text-xl font-black">{card.title}</h3>
+                <p className="mt-3 text-slate-600">{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="leistungen" className="bg-slate-950 px-4 py-20 text-white sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <SectionHead
+            eyebrow={t.services.eyebrow}
+            title={t.services.title}
+            text={t.services.text}
+            dark
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {t.services.cards.map((card) => (
+              <DarkCard key={card.title} title={card.title} text={card.text} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="prozess" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <SectionHead
+            eyebrow={t.process.eyebrow}
+            title={t.process.title}
+            text={t.process.text}
+          />
+
+          <div className="mt-10 grid gap-4">
+            {t.process.steps.map((step, index) => (
+              <article
+                key={step.title}
+                className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:grid-cols-[auto_1fr]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 font-black text-white">
+                  {index + 1}
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-black">{step.title}</h3>
+                  <p className="mt-2 text-slate-600">{step.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pakete" className="bg-slate-50 px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <SectionHead
+            eyebrow={t.packages.eyebrow}
+            title={t.packages.title}
+            text={t.packages.text}
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {t.packages.cards.map((card, index) => (
+              <PricingCard
+                key={card.title}
+                highlighted={index === 1}
+                title={card.title}
+                description={card.description}
+                price={card.price}
+                button={card.button}
+                features={card.features}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="branchen" className="bg-slate-950 px-4 py-20 text-white sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <SectionHead
+            eyebrow={t.industries.eyebrow}
+            title={t.industries.title}
+            text={t.industries.text}
+            dark
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {t.industries.cards.map((card) => (
+              <DarkCard key={card.title} title={card.title} text={card.text} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="seo" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
+          <div>
+            <p className="text-sm font-black uppercase tracking-widest text-blue-600">
+              {t.seo.eyebrow}
+            </p>
+
+            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
+              {t.seo.title}
+            </h2>
+
+            <p className="mt-5 text-lg text-slate-600">{t.seo.text}</p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-xl">
+            <h3 className="text-xl font-black">{t.seo.boxTitle}</h3>
+
+            <ul className="mt-5 grid gap-3 text-slate-600">
+              {t.seo.features.map((feature) => (
+                <li
+                  key={feature}
+                  className="before:font-black before:text-green-600 before:content-['✓_']"
+                >
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="bg-slate-50 px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto max-w-4xl">
+          <SectionHead eyebrow={t.faq.eyebrow} title={t.faq.title} />
+
+          <div className="mt-10 grid gap-4">
+            {t.faq.items.map((item) => (
+              <FaqItem
+                key={item.question}
+                question={item.question}
+                answer={item.answer}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="kontakt" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 rounded-[2rem] bg-gradient-to-br from-blue-600 to-slate-950 p-6 text-white shadow-2xl md:grid-cols-[1.1fr_0.9fr] md:p-12">
+            <div>
+              <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
+                {t.contact.title}
+              </h2>
+
+              <p className="mt-5 text-lg text-blue-100">{t.contact.text}</p>
+            </div>
+
+            <form
+              action="mailto:kontakt@aj-tech.de"
+              method="post"
+              encType="text/plain"
+              className="grid gap-4 rounded-3xl bg-white p-5 text-slate-950"
+            >
+              <InputField
+                id="name"
+                label={t.contact.name}
+                name="Name"
+                autoComplete="name"
+                required
+              />
+
+              <InputField
+                id="email"
+                label={t.contact.email}
+                name="E-Mail"
+                type="email"
+                autoComplete="email"
+                required
+              />
+
+              <InputField
+                id="website"
+                label={t.contact.website}
+                name="Website"
+                type="url"
+                placeholder="https://"
+              />
+
+              <div>
+                <label className="font-bold" htmlFor="message">
+                  {t.contact.message}
+                </label>
+
+                <textarea
+                  id="message"
+                  name="Nachricht"
+                  placeholder={t.contact.placeholder}
+                  className="mt-2 min-h-32 w-full resize-y rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-600"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="rounded-full bg-blue-600 px-6 py-3 font-extrabold text-white transition hover:bg-blue-700"
+              >
+                {t.contact.button}
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <div className="loading-page fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+        <img
+          src="/aj-tech-logo.png"
+          alt="AJ-Tech Logo"
+          className="w-52 animate-pulse sm:w-72"
+        />
       </div>
+    </main>
+  );
+}
 
-      {/* CONTENT SECTIONS */}
-      <section id="service" className="pt-20">
-        <Cards />
-      </section>
+function SectionHead({
+  eyebrow,
+  title,
+  text,
+  dark = false,
+}: {
+  eyebrow: string;
+  title: string;
+  text?: string;
+  dark?: boolean;
+}) {
+  return (
+    <div className="max-w-3xl">
+      <p
+        className={`text-sm font-black uppercase tracking-widest ${
+          dark ? "text-blue-400" : "text-blue-600"
+        }`}
+      >
+        {eyebrow}
+      </p>
 
-      <section id="ueber-uns" className="pt-20">
-        <UeberUns />
-      </section>
+      <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
+        {title}
+      </h2>
 
-      <section id="kontakt" className="pt-28">
-        <Kontakt />
-      </section>
+      {text && (
+        <p className={`mt-5 text-lg ${dark ? "text-slate-300" : "text-slate-600"}`}>
+          {text}
+        </p>
+      )}
+    </div>
+  );
+}
 
-      {/* FOOTER */}
+function DarkCard({ title, text }: { title: string; text: string }) {
+  return (
+    <article className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl">
+      <h3 className="text-xl font-black">{title}</h3>
+      <p className="mt-3 text-slate-300">{text}</p>
+    </article>
+  );
+}
+
+function PricingCard({
+  title,
+  description,
+  price,
+  features,
+  button,
+  highlighted = false,
+}: {
+  title: string;
+  description: string;
+  price: string;
+  features: string[];
+  button: string;
+  highlighted?: boolean;
+}) {
+  return (
+    <article
+      className={`flex h-full flex-col rounded-3xl border bg-white p-6 shadow-xl ${
+        highlighted ? "border-blue-600" : "border-slate-200"
+      }`}
+    >
+      <h3 className="text-2xl font-black">{title}</h3>
+
+      <p className="mt-3 text-slate-600">{description}</p>
+
+      <div className="mt-5 text-4xl font-black tracking-tight">{price}</div>
+
+      <ul className="mt-5 grid gap-3 text-slate-600">
+        {features.map((feature) => (
+          <li
+            key={feature}
+            className="before:font-black before:text-green-600 before:content-['✓_']"
+          >
+            {feature}
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href="#kontakt"
+        className={`mt-8 inline-flex justify-center rounded-full px-6 py-3 font-extrabold transition ${
+          highlighted
+            ? "bg-blue-600 text-white hover:bg-blue-700"
+            : "border border-slate-200 bg-white text-slate-950 hover:border-blue-600 hover:text-blue-600"
+        }`}
+      >
+        {button}
+      </a>
+    </article>
+  );
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  return (
+    <details className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+      <summary className="cursor-pointer text-lg font-black">{question}</summary>
+      <p className="mt-4 text-slate-600">{answer}</p>
+    </details>
+  );
+}
+
+function InputField({
+  id,
+  label,
+  name,
+  type = "text",
+  placeholder,
+  autoComplete,
+  required = false,
+}: {
+  id: string;
+  label: string;
+  name: string;
+  type?: string;
+  placeholder?: string;
+  autoComplete?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className="font-bold" htmlFor={id}>
+        {label}
+      </label>
+
+      <input
+        id={id}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        required={required}
+        className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-600"
+      />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/impressum" element={<Impressum />} />
+      </Routes>
+
       <Footer />
     </div>
   );
