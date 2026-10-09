@@ -17,7 +17,10 @@ body,
 
 body {
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   font-family:
+    "Inter Variable",
     Inter,
     ui-sans-serif,
     system-ui,
@@ -29,14 +32,18 @@ body {
   color: #0f172a;
 }
 
-a {
-  text-decoration: none;
-}
+/* In @layer base, damit Tailwind-Klassen (font-extrabold, underline …) gewinnen. */
+@layer base {
+  a {
+    text-decoration: none;
+  }
 
-button,
-input,
-textarea {
-  font: inherit;
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
 }
 
 .container {

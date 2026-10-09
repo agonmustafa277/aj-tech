@@ -1,37 +1,19 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import { gsap } from "gsap";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-import SEO from "./components/SEO";
+import ContactForm from "./components/ContactForm";
+import StickyContactBar from "./components/StickyContactBar";
 import Navbar from "./scenes/navbar";
 import Footer from "./scenes/Footer";
 import Datenschutz from "./pages/Datenschutz";
 import Impressum from "./pages/Impressum";
+import NotFound from "./pages/NotFound";
 import { useLanguage } from "./i18n/LanguageContext";
-import logoUrl from "./assets/aj-tech-logo-white.svg"
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "./i18n/extra";
+import { applyRouteMeta } from "./seo";
 
 function Home() {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    const timeline = gsap.timeline();
-
-    timeline.to(".loading-page", {
-      opacity: 0,
-      duration: 1.2,
-      delay: 1.8,
-      ease: "power2.out",
-    });
-
-    timeline.set(".loading-page", {
-      display: "none",
-      pointerEvents: "none",
-    });
-
-    return () => {
-      timeline.kill();
-    };
-  }, []);
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.55),transparent_32%),radial-gradient(circle_at_80%_10%,rgba(14,165,233,0.28),transparent_28%),linear-gradient(135deg,#0f172a,#111827_60%,#020617)]">
@@ -45,7 +27,7 @@ function Home() {
               {t.hero.badge}
             </span>
 
-            <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 hyphens-auto break-words text-[2.1rem] font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
               {t.hero.title}
             </h1>
 
@@ -56,18 +38,28 @@ function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#kontakt"
-                className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:bg-blue-700 sm:text-base"
+                className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-4 text-base font-extrabold text-white shadow-lg shadow-blue-900/40 transition hover:bg-blue-500"
               >
                 {t.hero.primary}
               </a>
 
               <a
-                href="#leistungen"
-                className="inline-flex justify-center rounded-full border border-white/20 bg-white px-6 py-3 text-sm font-extrabold text-slate-950 transition hover:border-blue-400 hover:text-blue-600 sm:text-base"
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-4 text-base font-extrabold text-white transition hover:border-white/50 hover:bg-white/10"
               >
-                {t.hero.secondary}
+                <PhoneIcon />
+                {t.hero.call}
               </a>
             </div>
+
+            <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold text-blue-100 sm:flex-row sm:flex-wrap sm:gap-x-6">
+              {t.hero.trust.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span aria-hidden="true" className="text-green-300">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <aside className="w-full rounded-3xl border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur sm:p-7">
@@ -87,7 +79,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="probleme" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+      <section id="probleme" className="scroll-mt-24 bg-white px-4 py-20 text-slate-950 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <SectionHead
             eyebrow={t.problem.eyebrow}
@@ -113,7 +105,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="leistungen" className="bg-slate-950 px-4 py-20 text-white sm:px-6">
+      <section id="leistungen" className="scroll-mt-24 bg-slate-950 px-4 py-20 text-white sm:px-6">
         <div className="mx-auto max-w-7xl">
           <SectionHead
             eyebrow={t.services.eyebrow}
@@ -130,7 +122,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="prozess" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+      <section id="prozess" className="scroll-mt-24 bg-white px-4 py-20 text-slate-950 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <SectionHead
             eyebrow={t.process.eyebrow}
@@ -158,9 +150,58 @@ function Home() {
         </div>
       </section>
 
-    
 
-      <section id="branchen" className="bg-slate-950 px-4 py-20 text-white sm:px-6">
+      <section id="ueber-mich" className="scroll-mt-28 bg-slate-50 px-4 py-20 text-slate-950 sm:px-6">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[0.8fr_1.2fr]">
+          {/* Tipp: Ein echtes Foto (z. B. src/assets/agon.jpg) wirkt hier am stärksten. */}
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-xl">
+            <div
+              aria-hidden="true"
+              className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-slate-950 text-3xl font-black text-white"
+            >
+              AM
+            </div>
+            <p className="mt-5 text-2xl font-black">Agon Mustafa</p>
+            <p className="mt-1 text-slate-600">{t.about.role} · AJ-Tech</p>
+            <p className="mt-1 text-sm text-slate-500">53894 Mechernich</p>
+
+            <div className="mt-6 grid gap-3">
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-3 font-extrabold text-white transition hover:bg-blue-700"
+              >
+                <PhoneIcon />
+                {PHONE_DISPLAY}
+              </a>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="inline-flex justify-center break-all rounded-full border border-slate-300 px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-blue-600 hover:text-blue-700"
+              >
+                {EMAIL}
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <SectionHead eyebrow={t.about.eyebrow} title={t.about.title} />
+            <p className="mt-5 text-lg text-slate-700">{t.about.text}</p>
+            <p className="mt-4 text-lg text-slate-700">{t.about.text2}</p>
+
+            <ul className="mt-6 grid gap-3">
+              {t.about.points.map((point) => (
+                <li key={point} className="flex gap-3 text-slate-800">
+                  <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">
+                    ✓
+                  </span>
+                  <span className="font-semibold">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="branchen" className="scroll-mt-24 bg-slate-950 px-4 py-20 text-white sm:px-6">
         <div className="mx-auto max-w-7xl">
           <SectionHead
             eyebrow={t.industries.eyebrow}
@@ -177,7 +218,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="seo" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+      <section id="seo" className="scroll-mt-24 bg-white px-4 py-20 text-slate-950 sm:px-6">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
           <div>
             <p className="text-sm font-black uppercase tracking-widest text-blue-600">
@@ -208,12 +249,12 @@ function Home() {
         </div>
       </section>
 
-      <section id="faq" className="bg-slate-50 px-4 py-20 text-slate-950 sm:px-6">
+      <section id="faq" className="scroll-mt-24 bg-slate-50 px-4 py-20 text-slate-950 sm:px-6">
         <div className="mx-auto max-w-4xl">
           <SectionHead eyebrow={t.faq.eyebrow} title={t.faq.title} />
 
           <div className="mt-10 grid gap-4">
-            {t.faq.items.map((item) => (
+            {[...t.faq.items, ...t.faqMore].map((item) => (
               <FaqItem
                 key={item.question}
                 question={item.question}
@@ -224,81 +265,48 @@ function Home() {
         </div>
       </section>
 
-      <section id="kontakt" className="bg-white px-4 py-20 text-slate-950 sm:px-6">
+      <section id="kontakt" className="scroll-mt-24 bg-white px-4 py-20 text-slate-950 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 rounded-[2rem] bg-gradient-to-br from-blue-600 to-slate-950 p-6 text-white shadow-2xl md:grid-cols-[1.1fr_0.9fr] md:p-12">
+          <div className="grid gap-10 rounded-[2rem] bg-gradient-to-br from-blue-700 via-blue-800 to-slate-950 p-6 text-white shadow-2xl md:grid-cols-[0.95fr_1.05fr] md:p-12">
             <div>
               <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
                 {t.contact.title}
               </h2>
 
               <p className="mt-5 text-lg text-blue-100">{t.contact.text}</p>
+
+              <h3 className="mt-10 text-sm font-black uppercase tracking-widest text-blue-200">
+                {t.contact.stepsTitle}
+              </h3>
+              <ol className="mt-4 grid gap-4">
+                {t.contact.steps.map((step, index) => (
+                  <li key={step} className="flex gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-sm font-black text-blue-700">
+                      {index + 1}
+                    </span>
+                    <span className="pt-1 text-blue-50">{step}</span>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-10 rounded-3xl border border-white/15 bg-white/10 p-5">
+                <p className="font-black">{t.contact.direct}</p>
+                <div className="mt-3 grid gap-2 text-blue-50">
+                  <a href={PHONE_HREF} className="inline-flex items-center gap-2 font-bold hover:text-white">
+                    <PhoneIcon />
+                    {PHONE_DISPLAY}
+                  </a>
+                  <a href={`mailto:${EMAIL}`} className="break-all font-bold hover:text-white">
+                    {EMAIL}
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <form
-              action="mailto:agon.mustafa@aj-tech.de"
-              method="post"
-              encType="text/plain"
-              className="grid gap-4 rounded-3xl bg-white p-5 text-slate-950"
-            >
-              <InputField
-                id="name"
-                label={t.contact.name}
-                name="Name"
-                autoComplete="name"
-                required
-              />
-
-              <InputField
-                id="email"
-                label={t.contact.email}
-                name="E-Mail"
-                type="email"
-                autoComplete="email"
-                required
-              />
-
-              <InputField
-                id="website"
-                label={t.contact.website}
-                name="Website"
-                type="url"
-                placeholder="https://"
-              />
-
-              <div>
-                <label className="font-bold" htmlFor="message">
-                  {t.contact.message}
-                </label>
-
-                <textarea
-                  id="message"
-                  name="Nachricht"
-                  placeholder={t.contact.placeholder}
-                  className="mt-2 min-h-32 w-full resize-y rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-600"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="rounded-full bg-blue-600 px-6 py-3 font-extrabold text-white transition hover:bg-blue-700"
-              >
-                {t.contact.button}
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
-
-      <div className="loading-page fixed inset-0 z-[9999] flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.55),transparent_32%),radial-gradient(circle_at_80%_10%,rgba(14,165,233,0.28),transparent_28%),linear-gradient(135deg,#0f172a,#111827_60%,#020617)]">
-        <img
-  src={logoUrl}
-  alt="AJ-Tech Logo"
-  width={460}
-  height={460}
-  className="h-80 w-auto"
-/>
-      </div>
     </main>
   );
 }
@@ -346,58 +354,6 @@ function DarkCard({ title, text }: { title: string; text: string }) {
   );
 }
 
-function PricingCard({
-  title,
-  description,
-  price,
-  features,
-  button,
-  highlighted = false,
-}: {
-  title: string;
-  description: string;
-  price: string;
-  features: string[];
-  button: string;
-  highlighted?: boolean;
-}) {
-  return (
-    <article
-      className={`flex h-full flex-col rounded-3xl border bg-white p-6 shadow-xl ${
-        highlighted ? "border-blue-600" : "border-slate-200"
-      }`}
-    >
-      <h3 className="text-2xl font-black">{title}</h3>
-
-      <p className="mt-3 text-slate-600">{description}</p>
-
-      <div className="mt-5 text-4xl font-black tracking-tight">{price}</div>
-
-      <ul className="mt-5 grid gap-3 text-slate-600">
-        {features.map((feature) => (
-          <li
-            key={feature}
-            className="before:font-black before:text-green-600 before:content-['✓_']"
-          >
-            {feature}
-          </li>
-        ))}
-      </ul>
-
-      <a
-        href="#kontakt"
-        className={`mt-8 inline-flex justify-center rounded-full px-6 py-3 font-extrabold transition ${
-          highlighted
-            ? "bg-blue-600 text-white hover:bg-blue-700"
-            : "border border-slate-200 bg-white text-slate-950 hover:border-blue-600 hover:text-blue-600"
-        }`}
-      >
-        {button}
-      </a>
-    </article>
-  );
-}
-
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   return (
     <details className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -407,59 +363,44 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
-function InputField({
-  id,
-  label,
-  name,
-  type = "text",
-  placeholder,
-  autoComplete,
-  required = false,
-}: {
-  id: string;
-  label: string;
-  name: string;
-  type?: string;
-  placeholder?: string;
-  autoComplete?: string;
-  required?: boolean;
-}) {
+function PhoneIcon() {
   return (
-    <div>
-      <label className="font-bold" htmlFor={id}>
-        {label}
-      </label>
-
-      <input
-        id={id}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        required={required}
-        className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-600"
-      />
-    </div>
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
   );
 }
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    applyRouteMeta(location.pathname);
+  }, [location.pathname]);
+
   return (
-    <>
-      <SEO />
-   
-    <div className="min-h-screen overflow-x-hidden bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+    <div className="min-h-screen overflow-x-hidden bg-slate-950">
+      <a
+        href="#inhalt"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-slate-950"
+      >
+        Zum Inhalt springen
+      </a>
+
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/datenschutz" element={<Datenschutz />} />
-        <Route path="/impressum" element={<Impressum />} />
-      </Routes>
+      <div id="inhalt">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
 
       <Footer />
-      </div>
-       </>
+      {location.pathname === "/" && <StickyContactBar />}
+    </div>
   );
 }
 

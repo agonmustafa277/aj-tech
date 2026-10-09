@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { useLanguage } from "../../i18n/LanguageContext";
-import logoUrl from "../../assets/aj-tech-logo-white.svg"
+import logoUrl from "../../assets/aj-tech-logo-white.svg";
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "../../i18n/extra";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -11,27 +12,34 @@ const Footer = () => {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-4">
         <div className="flex flex-col gap-4">
           <img
-  src={logoUrl}
-  alt="AJ-Tech Logo"
-  width={160}
-  height={160}
-  className="h-60 w-auto"
-/>
+            src={logoUrl}
+            alt="AJ-Tech Logo"
+            width={160}
+            height={160}
+            loading="lazy"
+            className="h-24 w-auto self-start"
+          />
 
           <p className="text-sm leading-relaxed text-slate-300">
             {t.footer.description}
           </p>
 
           <a
-            href="mailto:kontakt@aj-tech.de"
+            href={`mailto:${EMAIL}`}
             className="text-sm font-bold text-slate-300 transition hover:text-blue-300"
           >
-            agon.mustafa@aj-tech.de
+            {EMAIL}
+          </a>
+          <a
+            href={PHONE_HREF}
+            className="text-sm font-bold text-slate-300 transition hover:text-blue-300"
+          >
+            {PHONE_DISPLAY}
           </a>
         </div>
 
         <div>
-          <h3 className="mb-3 text-lg font-black">{t.footer.servicesTitle}</h3>
+          <h2 className="mb-3 text-lg font-black">{t.footer.servicesTitle}</h2>
 
           <ul className="space-y-2 text-sm text-slate-300">
             {t.footer.services.map((service) => (
@@ -41,7 +49,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-3 text-lg font-black">{t.footer.legalTitle}</h3>
+          <h2 className="mb-3 text-lg font-black">{t.footer.legalTitle}</h2>
 
           <ul className="space-y-2 text-sm text-slate-300">
             <li>
@@ -58,16 +66,16 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-3 text-lg font-black">{t.footer.contactTitle}</h3>
+          <h2 className="mb-3 text-lg font-black">{t.footer.contactTitle}</h2>
 
           <ul className="space-y-2 text-sm text-slate-300">
-            <li>A.J. Tech</li>
+            <li>AJ-Tech</li>
             <li>Inh.: Agon Mustafa</li>
             <li>Mechernicher Weg 88</li>
             <li>53894 Mechernich</li>
             <li>Deutschland</li>
             <li>
-              <a href="/#kontakt" className="transition hover:text-blue-300">
+              <a href="/#kontakt" className="font-bold text-blue-300 transition hover:text-blue-200">
                 {t.footer.analysis}
               </a>
             </li>

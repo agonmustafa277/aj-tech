@@ -1,6 +1,6 @@
 const Impressum = () => {
   return (
-    <main className="min-h-screen bg-white px-4 py-20 text-slate-950 sm:px-6">
+    <main className="min-h-screen bg-white px-4 pb-20 pt-32 sm:pt-36 text-slate-950 sm:px-6">
       <section className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
           Impressum
@@ -9,11 +9,13 @@ const Impressum = () => {
         <div className="mt-10 space-y-10 text-slate-700">
           <section className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <h2 className="text-2xl font-black text-slate-950">
-              Angaben gemäß § 5 TMG
+              Angaben gemäß § 5 DDG
             </h2>
 
             <p className="mt-4 leading-relaxed">
-              Agon Mustafa
+              AJ-Tech
+              <br />
+              Inhaber: Agon Mustafa
               <br />
               Mechernicher Weg 88
               <br />
@@ -67,7 +69,8 @@ const Impressum = () => {
 
           <section className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <h2 className="text-2xl font-black text-slate-950">
-              Zentrale Kontaktstelle nach dem Digital Services Act
+              Zentrale Kontaktstelle nach dem Digital Services Act (Verordnung
+              (EU) 2022/2065)
             </h2>
 
             <p className="mt-4 leading-relaxed">

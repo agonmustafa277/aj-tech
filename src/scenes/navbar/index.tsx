@@ -191,6 +191,7 @@ const Navbar = () => {
   const links = [
     { href: "/#leistungen", label: t.nav.services },
     { href: "/#prozess", label: t.nav.process },
+    { href: "/#ueber-mich", label: t.nav.about },
     { href: "/#faq", label: t.nav.faq },
     { href: "/#kontakt", label: t.nav.contact },
   ];

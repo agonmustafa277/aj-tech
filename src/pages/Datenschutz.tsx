@@ -1,6 +1,6 @@
 const Datenschutz = () => {
   return (
-    <main className="min-h-screen bg-white px-4 py-20 text-slate-950 sm:px-6">
+    <main className="min-h-screen bg-white px-4 pb-20 pt-32 sm:pt-36 text-slate-950 sm:px-6">
       <section className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
           Datenschutzerklärung
@@ -44,9 +44,9 @@ const Datenschutz = () => {
             <SubBlock title="Wofür nutzen wir Ihre Daten?">
               <p>
                 Ein Teil der Daten wird erhoben, um eine fehlerfreie
-                Bereitstellung der Website zu gewährleisten. Andere Daten können
-                zur Analyse des Nutzerverhaltens oder zur Bearbeitung von
-                Anfragen verwendet werden.
+                Bereitstellung der Website zu gewährleisten. Andere Daten werden
+                zur Bearbeitung Ihrer Anfragen verwendet. Eine Analyse des
+                Nutzerverhaltens (Tracking) findet nicht statt.
               </p>
             </SubBlock>
 
@@ -84,7 +84,7 @@ const Datenschutz = () => {
             </SubBlock>
 
             <SubBlock title="Hosting-Anbieter">
-              <p>hosting.de</p>
+              <p>hosting.de GmbH, Deutschland</p>
             </SubBlock>
 
             <SubBlock title="Auftragsverarbeitung">
@@ -255,12 +255,20 @@ const Datenschutz = () => {
           </InfoBlock>
 
           <InfoBlock title="4. Datenerfassung auf dieser Website">
-            <SubBlock title="Cookies">
+            <SubBlock title="Cookies und lokale Speicherung">
               <p>
-                Unsere Internetseiten können Cookies verwenden. Cookies richten
-                auf Ihrem Endgerät keinen Schaden an und enthalten keine Viren.
-                Sie dienen dazu, unser Angebot nutzerfreundlicher, effektiver und
-                sicherer zu machen.
+                Diese Website verwendet keine Cookies und keine Tracking- oder
+                Analyse-Tools.
+              </p>
+              <p>
+                Wenn Sie über die Sprachauswahl eine Sprache wählen, wird diese
+                Einstellung im lokalen Speicher Ihres Browsers (localStorage)
+                unter dem Namen „aj-tech-language“ abgelegt, damit die Seite beim
+                nächsten Besuch in Ihrer Sprache erscheint. Diese Information
+                verlässt Ihr Gerät nicht. Die Speicherung ist für die von Ihnen
+                ausdrücklich gewünschte Funktion unbedingt erforderlich (§ 25
+                Abs. 2 Nr. 2 TDDDG). Sie können sie jederzeit über die
+                Einstellungen Ihres Browsers löschen.
               </p>
             </SubBlock>
 
@@ -282,10 +290,35 @@ const Datenschutz = () => {
 
             <SubBlock title="Kontaktformular">
               <p>
-                Wenn Sie uns per Kontaktformular Anfragen zukommen lassen,
-                werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort
-                angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für
-                den Fall von Anschlussfragen bei uns gespeichert.
+                Wenn Sie uns über das Kontaktformular eine Anfrage senden,
+                werden Ihre Angaben aus dem Formular (Name, E-Mail-Adresse und
+                – falls angegeben – Telefonnummer, Website, Thema und
+                Nachricht) zwecks Bearbeitung der Anfrage und für den Fall von
+                Anschlussfragen verarbeitet. Die Daten werden über ein Skript
+                auf dem Server unseres Hosting-Anbieters per E-Mail an uns
+                übermittelt und nicht in einer Datenbank gespeichert.
+              </p>
+              <p>
+                Zum Schutz vor Missbrauch (Spam) wird Ihre IP-Adresse beim
+                Absenden kurzzeitig in anonymisierter Form (als Prüfsumme) auf
+                dem Server gespeichert und nach spätestens 24 Stunden
+                automatisch gelöscht.
+              </p>
+              <p>
+                Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b
+                DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags
+                zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen
+                erforderlich ist. In allen übrigen Fällen beruht die
+                Verarbeitung auf unserem berechtigten Interesse an der
+                effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6
+                Abs. 1 lit. f DSGVO).
+              </p>
+              <p>
+                Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben
+                bei uns, bis Sie uns zur Löschung auffordern oder der Zweck für
+                die Datenspeicherung entfällt (z. B. nach abgeschlossener
+                Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen –
+                insbesondere Aufbewahrungsfristen – bleiben unberührt.
               </p>
             </SubBlock>
 
@@ -299,61 +332,13 @@ const Datenschutz = () => {
             </SubBlock>
           </InfoBlock>
 
-          <InfoBlock title="5. Soziale Medien">
-            <SubBlock title="Facebook, X und Instagram">
+          <InfoBlock title="5. Schriftarten">
+            <SubBlock title="Lokal eingebundene Schriftarten">
               <p>
-                Sofern auf dieser Website Verlinkungen oder Elemente sozialer
-                Netzwerke eingebunden sind, können beim Aufruf entsprechender
-                Inhalte personenbezogene Daten an die jeweiligen Anbieter
-                übertragen werden. Nutzen Sie solche Links oder Funktionen nur,
-                wenn Sie mit der Datenverarbeitung durch den jeweiligen Anbieter
-                einverstanden sind.
-              </p>
-            </SubBlock>
-          </InfoBlock>
-
-          <InfoBlock title="6. Newsletter">
-            <SubBlock title="Newsletterdaten">
-              <p>
-                Wenn Sie einen Newsletter beziehen möchten, benötigen wir eine
-                E-Mail-Adresse sowie Informationen, die uns die Überprüfung
-                gestatten, dass Sie Inhaber der angegebenen E-Mail-Adresse sind
-                und mit dem Empfang des Newsletters einverstanden sind.
-              </p>
-            </SubBlock>
-
-            <SubBlock title="Newsletterversand an Bestandskunden">
-              <p>
-                Wenn Sie Waren oder Dienstleistungen bei uns bestellen und dabei
-                Ihre E-Mail-Adresse hinterlegen, kann diese anschließend für den
-                Versand eigener ähnlicher Angebote verwendet werden, sofern dies
-                gesetzlich zulässig ist.
-              </p>
-            </SubBlock>
-          </InfoBlock>
-
-          <InfoBlock title="7. Plugins und Tools">
-            <SubBlock title="Google Fonts">
-              <p>
-                Diese Seite kann Google Fonts lokal verwenden. Bei lokaler
-                Einbindung wird keine Verbindung zu Servern von Google
+                Diese Website nutzt die Schriftart „Inter“. Sie ist lokal auf
+                unserem Server eingebunden. Beim Aufruf der Seite wird keine
+                Verbindung zu Servern von Google oder anderen Drittanbietern
                 hergestellt.
-              </p>
-            </SubBlock>
-
-            <SubBlock title="Font Awesome / Icon-Fonts">
-              <p>
-                Diese Seite kann Icon-Fonts oder vergleichbare Symbolbibliotheken
-                verwenden. Wenn diese lokal eingebunden sind, findet keine
-                externe Datenübertragung an den Anbieter statt.
-              </p>
-            </SubBlock>
-
-            <SubBlock title="Google Maps">
-              <p>
-                Sofern Google Maps auf dieser Website eingebunden wird, können
-                Daten an Google übertragen werden. Google Maps sollte nur nach
-                vorheriger Einwilligung geladen werden.
               </p>
             </SubBlock>
           </InfoBlock>
