@@ -115,13 +115,13 @@ export const translations: Record<Language, Translation> = {
       process: "Ablauf",
       faq: "FAQ",
       contact: "Kontakt",
-      analysis: "Kostenlose Webseiten Analyse",
+      analysis: "Kostenlose Website-Analyse",
     },
     hero: {
-      badge: "Technisch saubere Websites für messbare Anfragen",
-      title: "Webseitenentwicklung und Automatisierung für kleine Unternehmen",
-      text: "AJ-Tech erstellt schnelle, strukturierte und SEO-optimierte Websites, die Besucher zu Anfragen machen. Zusätzlich automatisieren wir Kontaktformulare, Terminbuchungen und interne Abläufe.",
-      primary: "Website prüfen lassen",
+      badge: "Webdesign aus Mechernich · Kreis Euskirchen & deutschlandweit",
+      title: "Webdesign in Mechernich: Websites, die Anfragen bringen",
+      text: "AJ-Tech entwickelt schnelle, moderne Websites für Handwerker, Dienstleister und kleine Betriebe – mit klaren Texten, sauberer SEO-Basis und Kontaktwegen, die wirklich funktionieren. Auf Wunsch automatisieren wir auch Anfragen, Terminbuchungen und E-Mail-Abläufe.",
+      primary: "Kostenlose Erstanalyse anfragen",
       secondary: "Leistungen ansehen",
       cardTitle: "Was Ihre Website leisten muss",
       points: [
@@ -245,7 +245,7 @@ export const translations: Record<Language, Translation> = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Häufige Fragen zu Webseitenentwicklung und Automatisierung.",
+      title: "Häufige Fragen zu Webdesign und Automatisierung.",
       items: [
         {
           question: "Kann AJ-Tech meine bestehende Website verbessern?",
@@ -266,17 +266,17 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     contact: {
-      title: "Kostenlose Website-Erstanalyse für Ihr Unternehmen",
-      text: "AJ-Tech prüft Ihre Website auf sichtbare Anfrageverluste, technische Schwächen und schnelle Verbesserungsmöglichkeiten.",
+      title: "Kostenlose Erstanalyse für Ihre Website",
+      text: "Schildern Sie kurz Ihr Anliegen – ob neue Website, Überarbeitung oder Automatisierung. Sie erhalten eine persönliche, unverbindliche Einschätzung mit konkreten nächsten Schritten.",
       name: "Name",
       email: "E-Mail",
-      website: "Ihre Website",
-      message: "Worum geht es?",
-      placeholder: "Website-Relaunch, Optimierung, Automatisierung oder Wartung",
-      button: "Analyse anfragen",
+      website: "Ihre Website (falls vorhanden)",
+      message: "Ihre Nachricht",
+      placeholder: "z. B. Wir sind ein Malerbetrieb aus Euskirchen und möchten über unsere Website mehr Anfragen bekommen.",
+      button: "Kostenlose Erstanalyse anfragen",
     },
     footer: {
-      description: "Webseitenentwicklung, SEO-Grundoptimierung und Automatisierung für kleine Unternehmen.",
+      description: "Webdesign, SEO-Grundoptimierung und Automatisierung für kleine Unternehmen aus Mechernich, dem Kreis Euskirchen und ganz Deutschland.",
       servicesTitle: "Leistungen",
       legalTitle: "Rechtliches",
       contactTitle: "Kontakt",

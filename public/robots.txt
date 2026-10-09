@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /kontakt.php
 
 Sitemap: https://www.aj-tech.de/sitemap.xml
