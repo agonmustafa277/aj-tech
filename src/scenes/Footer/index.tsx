@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { useLanguage } from "../../i18n/LanguageContext";
+import logoUrl from "../../assets/aj-tech-logo-white.svg"
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -10,10 +11,12 @@ const Footer = () => {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-4">
         <div className="flex flex-col gap-4">
           <img
-            src="/aj-tech-logo.png"
-            alt="AJ-Tech Logo"
-            className="w-40 max-w-full"
-          />
+  src={logoUrl}
+  alt="AJ-Tech Logo"
+  width={160}
+  height={160}
+  className="h-60 w-auto"
+/>
 
           <p className="text-sm leading-relaxed text-slate-300">
             {t.footer.description}
@@ -23,7 +26,7 @@ const Footer = () => {
             href="mailto:kontakt@aj-tech.de"
             className="text-sm font-bold text-slate-300 transition hover:text-blue-300"
           >
-            kontakt@aj-tech.de
+            agon.mustafa@aj-tech.de
           </a>
         </div>
 

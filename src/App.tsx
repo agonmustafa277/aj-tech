@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { gsap } from "gsap";
 
+import SEO from "./components/SEO";
 import Navbar from "./scenes/navbar";
 import Footer from "./scenes/Footer";
 import Datenschutz from "./pages/Datenschutz";
 import Impressum from "./pages/Impressum";
 import { useLanguage } from "./i18n/LanguageContext";
+import logoUrl from "./assets/aj-tech-logo-white.svg"
 
 function Home() {
   const { t } = useLanguage();
@@ -32,10 +34,10 @@ function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+    <main className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.55),transparent_32%),radial-gradient(circle_at_80%_10%,rgba(14,165,233,0.28),transparent_28%),linear-gradient(135deg,#0f172a,#111827_60%,#020617)]">
       <section
         id="top"
-        className="relative w-full overflow-hidden px-4 pb-20 pt-20 text-white sm:px-6 md:pb-28 md:pt-28"
+        className="relative w-full overflow-hidden px-4 pb-20 pt-30 text-white sm:px-6 md:pb-28 md:pt-28"
       >
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
           <div className="max-w-3xl">
@@ -156,29 +158,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="pakete" className="bg-slate-50 px-4 py-20 text-slate-950 sm:px-6">
-        <div className="mx-auto max-w-7xl">
-          <SectionHead
-            eyebrow={t.packages.eyebrow}
-            title={t.packages.title}
-            text={t.packages.text}
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {t.packages.cards.map((card, index) => (
-              <PricingCard
-                key={card.title}
-                highlighted={index === 1}
-                title={card.title}
-                description={card.description}
-                price={card.price}
-                button={card.button}
-                features={card.features}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       <section id="branchen" className="bg-slate-950 px-4 py-20 text-white sm:px-6">
         <div className="mx-auto max-w-7xl">
@@ -256,7 +236,7 @@ function Home() {
             </div>
 
             <form
-              action="mailto:kontakt@aj-tech.de"
+              action="mailto:agon.mustafa@aj-tech.de"
               method="post"
               encType="text/plain"
               className="grid gap-4 rounded-3xl bg-white p-5 text-slate-950"
@@ -310,12 +290,14 @@ function Home() {
         </div>
       </section>
 
-      <div className="loading-page fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
+      <div className="loading-page fixed inset-0 z-[9999] flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.55),transparent_32%),radial-gradient(circle_at_80%_10%,rgba(14,165,233,0.28),transparent_28%),linear-gradient(135deg,#0f172a,#111827_60%,#020617)]">
         <img
-          src="/aj-tech-logo.png"
-          alt="AJ-Tech Logo"
-          className="w-52 animate-pulse sm:w-72"
-        />
+  src={logoUrl}
+  alt="AJ-Tech Logo"
+  width={460}
+  height={460}
+  className="h-80 w-auto"
+/>
       </div>
     </main>
   );
@@ -463,6 +445,9 @@ function InputField({
 
 function App() {
   return (
+    <>
+      <SEO />
+   
     <div className="min-h-screen overflow-x-hidden bg-gradient-to-r from-[#2c5364] to-[#0f2027]">
       <Navbar />
 
@@ -473,7 +458,8 @@ function App() {
       </Routes>
 
       <Footer />
-    </div>
+      </div>
+       </>
   );
 }
 
