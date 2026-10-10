@@ -55,7 +55,7 @@ export const extra: Record<Language, Extra> = {
       title: "Ein Ansprechpartner – von der ersten Idee bis zum Launch.",
       text: "Ich bin Agon Mustafa, Gründer von AJ-Tech. Bei mir sprechen Sie nicht mit einem Callcenter oder wechselnden Projektmanagern, sondern direkt mit dem Menschen, der Ihre Website plant und programmiert.",
       text2: "AJ-Tech sitzt in Mechernich. Ich arbeite für Betriebe im Kreis Euskirchen, in der Eifel und im Raum Köln/Bonn – und per Telefon oder Videocall für Kunden in ganz Deutschland.",
-      role: "Inhaber & Webentwickler",
+      role: "Inhaber & Softwareingenieur",
       points: [
         "Direkter Draht per Telefon und E-Mail",
         "Verständliche Sprache statt Fachchinesisch",
@@ -116,7 +116,7 @@ export const extra: Record<Language, Extra> = {
       title: "One contact person – from the first idea to launch.",
       text: "I am Agon Mustafa, founder of AJ-Tech. You won't talk to a call center or changing project managers, but directly to the person who plans and builds your website.",
       text2: "AJ-Tech is based in Mechernich, Germany. I work for businesses in the Euskirchen district, the Eifel and the Cologne/Bonn area – and by phone or video call for clients all over Germany.",
-      role: "Owner & web developer",
+      role: "Owner & software engineer",
       points: [
         "Direct line by phone and email",
         "Plain language instead of jargon",
@@ -177,7 +177,7 @@ export const extra: Record<Language, Extra> = {
       title: "Një person kontakti – nga ideja e parë deri në publikim.",
       text: "Unë jam Agon Mustafa, themeluesi i AJ-Tech. Nuk flisni me një qendër thirrjesh apo me menaxherë që ndryshojnë, por drejtpërdrejt me personin që planifikon dhe ndërton faqen tuaj.",
       text2: "AJ-Tech ndodhet në Mechernich, Gjermani. Punoj për biznese në rrethin e Euskirchen, në Eifel dhe në zonën Këln/Bon – dhe me telefon ose video-thirrje për klientë në të gjithë Gjermaninë.",
-      role: "Pronar & zhvillues uebi",
+      role: "Pronar & inxhinier softueri",
       points: [
         "Kontakt i drejtpërdrejtë me telefon dhe e-mail",
         "Gjuhë e kuptueshme në vend të zhargonit teknik",
@@ -238,7 +238,7 @@ export const extra: Record<Language, Extra> = {
       title: "Una sola persona de contacto, desde la primera idea hasta el lanzamiento.",
       text: "Soy Agon Mustafa, fundador de AJ-Tech. No hablará con un call center ni con gestores de proyecto que cambian, sino directamente con quien planifica y programa su web.",
       text2: "AJ-Tech está en Mechernich (Alemania). Trabajo para empresas del distrito de Euskirchen, el Eifel y la zona de Colonia/Bonn, y por teléfono o videollamada para clientes de toda Alemania.",
-      role: "Propietario y desarrollador web",
+      role: "Propietario e ingeniero de software",
       points: [
         "Contacto directo por teléfono y correo",
         "Lenguaje claro en lugar de tecnicismos",
@@ -299,7 +299,7 @@ export const extra: Record<Language, Extra> = {
       title: "İlk fikirden yayına kadar tek muhatap.",
       text: "Ben Agon Mustafa, AJ-Tech'in kurucusuyum. Bir çağrı merkeziyle ya da sürekli değişen proje yöneticileriyle değil, web sitenizi planlayan ve kodlayan kişiyle doğrudan konuşursunuz.",
       text2: "AJ-Tech, Almanya'nın Mechernich şehrindedir. Euskirchen bölgesi, Eifel ve Köln/Bonn çevresindeki işletmeler için; telefon veya görüntülü görüşme ile de tüm Almanya'daki müşteriler için çalışıyorum.",
-      role: "Sahibi & web geliştirici",
+      role: "Sahibi & yazılım mühendisi",
       points: [
         "Telefon ve e-posta ile doğrudan iletişim",
         "Teknik jargon yerine anlaşılır dil",
@@ -360,7 +360,7 @@ export const extra: Record<Language, Extra> = {
       title: "Ένας συνεργάτης – από την πρώτη ιδέα μέχρι την κυκλοφορία.",
       text: "Είμαι ο Agon Mustafa, ιδρυτής της AJ-Tech. Δεν μιλάτε με τηλεφωνικό κέντρο ή με διαφορετικούς υπεύθυνους έργου, αλλά απευθείας με τον άνθρωπο που σχεδιάζει και προγραμματίζει την ιστοσελίδα σας.",
       text2: "Η AJ-Tech βρίσκεται στο Mechernich της Γερμανίας. Εργάζομαι για επιχειρήσεις στην περιοχή Euskirchen, στο Eifel και στην περιοχή Κολωνίας/Βόννης – και μέσω τηλεφώνου ή βιντεοκλήσης για πελάτες σε όλη τη Γερμανία.",
-      role: "Ιδιοκτήτης & web developer",
+      role: "Ιδιοκτήτης & μηχανικός λογισμικού",
       points: [
         "Άμεση επικοινωνία μέσω τηλεφώνου και email",
         "Κατανοητή γλώσσα αντί για τεχνική ορολογία",
@@ -421,7 +421,7 @@ export const extra: Record<Language, Extra> = {
       title: "Un seul interlocuteur, de la première idée à la mise en ligne.",
       text: "Je suis Agon Mustafa, fondateur d'AJ-Tech. Vous ne parlez pas à un centre d'appels ni à des chefs de projet qui changent, mais directement à la personne qui conçoit et développe votre site.",
       text2: "AJ-Tech est basé à Mechernich, en Allemagne. Je travaille pour des entreprises du district d'Euskirchen, de l'Eifel et de la région Cologne/Bonn – et par téléphone ou visioconférence pour des clients dans toute l'Allemagne.",
-      role: "Fondateur & développeur web",
+      role: "Fondateur & ingénieur logiciel",
       points: [
         "Contact direct par téléphone et e-mail",
         "Un langage clair plutôt que du jargon",
@@ -482,7 +482,7 @@ export const extra: Record<Language, Extra> = {
       title: "Un unico referente, dalla prima idea al lancio.",
       text: "Sono Agon Mustafa, fondatore di AJ-Tech. Non parlate con un call center o con project manager che cambiano, ma direttamente con chi progetta e sviluppa il vostro sito.",
       text2: "AJ-Tech ha sede a Mechernich, in Germania. Lavoro per aziende del distretto di Euskirchen, dell'Eifel e dell'area Colonia/Bonn – e al telefono o in videochiamata per clienti in tutta la Germania.",
-      role: "Titolare & sviluppatore web",
+      role: "Titolare & ingegnere del software",
       points: [
         "Contatto diretto via telefono ed e-mail",
         "Linguaggio chiaro invece del gergo tecnico",
@@ -543,7 +543,7 @@ export const extra: Record<Language, Extra> = {
       title: "Eén aanspreekpunt – van het eerste idee tot de lancering.",
       text: "Ik ben Agon Mustafa, oprichter van AJ-Tech. U praat niet met een callcenter of wisselende projectmanagers, maar direct met degene die uw website plant en bouwt.",
       text2: "AJ-Tech is gevestigd in Mechernich, Duitsland. Ik werk voor bedrijven in de regio Euskirchen, de Eifel en de regio Keulen/Bonn – en via telefoon of videogesprek voor klanten in heel Duitsland.",
-      role: "Eigenaar & webontwikkelaar",
+      role: "Eigenaar & software-engineer",
       points: [
         "Direct contact via telefoon en e-mail",
         "Begrijpelijke taal in plaats van vakjargon",
@@ -604,7 +604,7 @@ export const extra: Record<Language, Extra> = {
       title: "Jedna osoba kontaktowa – od pierwszego pomysłu do startu.",
       text: "Nazywam się Agon Mustafa i jestem założycielem AJ-Tech. Nie rozmawiają Państwo z call center ani ze zmieniającymi się kierownikami projektów, lecz bezpośrednio z osobą, która planuje i programuje Państwa stronę.",
       text2: "AJ-Tech ma siedzibę w Mechernich w Niemczech. Pracuję dla firm z powiatu Euskirchen, regionu Eifel i okolic Kolonii/Bonn – a telefonicznie lub przez wideorozmowę dla klientów z całych Niemiec.",
-      role: "Właściciel & web developer",
+      role: "Właściciel & inżynier oprogramowania",
       points: [
         "Bezpośredni kontakt telefoniczny i mailowy",
         "Zrozumiały język zamiast żargonu",
@@ -665,7 +665,7 @@ export const extra: Record<Language, Extra> = {
       title: "Uma só pessoa de contacto – da primeira ideia ao lançamento.",
       text: "Sou o Agon Mustafa, fundador da AJ-Tech. Não fala com um call center nem com gestores de projeto que mudam, mas diretamente com quem planeia e programa o seu site.",
       text2: "A AJ-Tech está sediada em Mechernich, na Alemanha. Trabalho para empresas do distrito de Euskirchen, do Eifel e da região de Colónia/Bona – e por telefone ou videochamada para clientes em toda a Alemanha.",
-      role: "Proprietário & programador web",
+      role: "Proprietário & engenheiro de software",
       points: [
         "Contacto direto por telefone e e-mail",
         "Linguagem clara em vez de jargão técnico",
@@ -726,7 +726,7 @@ export const extra: Record<Language, Extra> = {
       title: "شخص تواصل واحد – من الفكرة الأولى حتى الإطلاق.",
       text: "أنا أغون مصطفى، مؤسس AJ-Tech. لن تتحدث مع مركز اتصال أو مع مديري مشاريع يتغيرون، بل مباشرة مع الشخص الذي يخطط موقعك ويبرمجه.",
       text2: "يقع مقر AJ-Tech في مدينة ميشرنيش في ألمانيا. أعمل لصالح الشركات في منطقة أويسكيرشن وإيفل ومنطقة كولونيا/بون، وعبر الهاتف أو مكالمات الفيديو لعملاء في جميع أنحاء ألمانيا.",
-      role: "المالك ومطوّر المواقع",
+      role: "المالك ومهندس البرمجيات",
       points: [
         "تواصل مباشر عبر الهاتف والبريد الإلكتروني",
         "لغة مفهومة بدلاً من المصطلحات التقنية",
@@ -787,7 +787,7 @@ export const extra: Record<Language, Extra> = {
       title: "Один контакт – от первой идеи до запуска.",
       text: "Меня зовут Агон Мустафа, я основатель AJ-Tech. Вы общаетесь не с колл-центром и не с меняющимися менеджерами проектов, а напрямую с человеком, который планирует и программирует ваш сайт.",
       text2: "AJ-Tech находится в Мехернихе, Германия. Я работаю для компаний округа Ойскирхен, региона Айфель и района Кёльн/Бонн, а по телефону или видеосвязи – для клиентов по всей Германии.",
-      role: "Владелец и веб-разработчик",
+      role: "Владелец и инженер-программист",
       points: [
         "Прямая связь по телефону и e-mail",
         "Понятный язык вместо технического жаргона",
